@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Brain, Target, Zap } from 'lucide-react';
 import heroImage from '../Images/Lägg till en rubrik.jpg';
-import hockeyPlayerIcon from '../Images/Lägg_till_en_rubrik__2_-removebg-preview.png';
+import hockeyPlayerIcon from '../Images/hockey-player-icon.png';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Home: React.FC = () => {
