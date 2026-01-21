@@ -2,17 +2,21 @@ import React from 'react';
 import { Instagram, Linkedin, ExternalLink } from 'lucide-react';
 import { Partner } from '../types';
 import logoImage from '../Images/skarmavbild-2023-09-29-kl.-10.55.36-1.png';
+import futureStarLogo from '../Images/FS-main-logo-slogan700-700.png';
+import bbGoalieLogo from '../Images/images (1).jpeg';
 
 const partners: Partner[] = [
   {
     name: 'Future Star Academy',
     url: 'https://futurestaracademy.com',
-    logoAlt: 'FSA Logo',
+    logoAlt: 'Future Star Academy Logo',
+    logo: futureStarLogo,
   },
   {
     name: 'BB Goalie',
     url: 'https://bbgoalie.com',
-    logoAlt: 'BB Goalie Logo',
+    logoAlt: '88 Goalie Academy Logo',
+    logo: bbGoalieLogo,
   },
 ];
 
@@ -37,15 +41,22 @@ const Footer: React.FC = () => {
           {/* Partners Column */}
           <div className="space-y-6">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500">Partners</h4>
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-6">
               {partners.map((partner) => (
                 <a
                   key={partner.name}
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center space-x-2 text-gray-300 hover:text-[#ffcb33] transition-colors"
+                  className="group flex items-center space-x-3 text-gray-300 hover:text-[#ffcb33] transition-all"
                 >
+                  {partner.logo && (
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.logoAlt}
+                      className="h-12 md:h-16 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                    />
+                  )}
                   <span className="font-medium">{partner.name}</span>
                   <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>

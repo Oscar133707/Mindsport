@@ -15,6 +15,7 @@ export interface Partner {
   name: string;
   url: string;
   logoAlt: string;
+  logo?: string;
 }
 
 export interface Lecture {

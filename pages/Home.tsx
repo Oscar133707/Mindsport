@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Brain, Target, Zap } from 'lucide-react';
+import { ArrowRight, Target, Trophy, TrendingUp, Shield } from 'lucide-react';
 import heroImage from '../Images/Lägg till en rubrik.jpg';
 import hockeyPlayerIcon from '../Images/hockey-player-icon.png';
+import cjImage from '../Images/CJ image.png';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Home: React.FC = () => {
   const [heroVisible, setHeroVisible] = useState(false);
-  const philosophyRef = useScrollAnimation({ threshold: 0.2 });
-  const servicesRef = useScrollAnimation({ threshold: 0.1 });
+  const aboutRef = useScrollAnimation({ threshold: 0.2 });
+  const approachRef = useScrollAnimation({ threshold: 0.2 });
+  const trustRef = useScrollAnimation({ threshold: 0.2 });
   const quoteRef = useScrollAnimation({ threshold: 0.3 });
+  const ctaRef = useScrollAnimation({ threshold: 0.2 });
 
   useEffect(() => {
     // Trigger hero animation on mount
@@ -72,85 +75,200 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Philosophy/Intro Section */}
-      <section className="py-32 bg-[#1f1f1f]" aria-labelledby="philosophy-title">
+      {/* About/Introduction Section */}
+      <section className="py-24 md:py-32 bg-[#1f1f1f]" aria-labelledby="about-title">
         <div className="max-w-[1200px] mx-auto px-5 md:px-10">
           <div 
-            ref={philosophyRef.elementRef}
-            className={`max-w-4xl mx-auto text-center space-y-10 transition-all duration-1000 ${
-              philosophyRef.isVisible 
+            ref={aboutRef.elementRef}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center transition-all duration-1000 ${
+              aboutRef.isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 id="philosophy-title" className="text-3xl md:text-4xl font-light text-white leading-tight">
-              Mental träning för prestation i världsklass.
-            </h2>
-            <div className="w-24 h-1 bg-[#ffcb33] mx-auto rounded-full"></div>
-            <p className="text-xl text-gray-300 font-light leading-relaxed max-w-2xl mx-auto">
-              Vi hjälper idrottare, ledare och organisationer att nå sin fulla potential genom evidensbaserad idrottspsykologi. Bygg styrkan inifrån.
-            </p>
+            {/* Text Content */}
+            <div className="space-y-6">
+              <h2 id="about-title" className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                Varför Mental Styrka?
+              </h2>
+              <div className="w-24 h-1 bg-[#ffcb33] rounded-full"></div>
+              <div className="space-y-5 text-lg text-gray-300 font-light leading-relaxed">
+                <p>
+                  Mitt namn är Carl-Johan Sjögren och jag har haft förmånen att ägna hela <strong className="text-white font-medium">13 år åt en professionell karriär inom ishockey</strong>. Under dessa år har jag fått arbeta hårt för att skaffa mig förståelse för vad som krävs för att nå framgång inom idrottens värld.
+                </p>
+                <p>
+                  Det har gett mig insikten att <strong className="text-white font-medium">prestation handlar om mer än bara fysisk förmåga</strong> – det handlar också om din mentala styrka. Mental styrka är en avgörande faktor för att nå framgång inom idrott. Det handlar om att utveckla och träna din mentala förmåga på samma sätt som du tränar din fysiska.
+                </p>
+                <p>
+                  Oavsett om du är en professionell idrottare, en amatör eller någonstans där emellan, är din <strong className="text-white font-medium">mentala inställning och styrka en avgörande faktor</strong> som kan ta din prestation till nya höjder.
+                </p>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 aspect-[4/3]">
+                <img 
+                  src={cjImage} 
+                  alt="Carl-Johan Sjögren - Professionell ishockeyspelare och mental tränare" 
+                  loading="lazy"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-32 bg-[#1f1f1f]" aria-label="Tjänster">
+      {/* Min Approach/Varför Jag Section */}
+      <section className="py-24 md:py-32 bg-[#1f1f1f] border-t border-gray-800" aria-labelledby="approach-title">
         <div className="max-w-[1200px] mx-auto px-5 md:px-10">
           <div 
-            ref={servicesRef.elementRef}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 transition-all duration-1000 ${
-              servicesRef.isVisible 
+            ref={approachRef.elementRef}
+            className={`transition-all duration-1000 ${
+              approachRef.isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="flex flex-col items-center text-center space-y-6 group">
-              <div className="w-20 h-20 bg-[#4e4e4e] text-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2 border border-gray-700">
-                <Brain size={32} strokeWidth={1.5} />
-              </div>
-              <h3 className="text-xl font-bold text-white tracking-wide group-hover:text-[#ffcb33] transition-colors">Mental Styrka</h3>
-              <p className="text-gray-400 leading-relaxed font-light">
-                Verktyg för att hantera press, motgångar och stress när det gäller som mest.
-              </p>
-            </div>
-            
-            <div className="flex flex-col items-center text-center space-y-6 group">
-              <div className="w-20 h-20 bg-[#4e4e4e] text-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2 border border-gray-700">
-                <Target size={32} strokeWidth={1.5} />
-              </div>
-              <h3 className="text-xl font-bold text-white tracking-wide group-hover:text-[#ffcb33] transition-colors">Fokus & Mål</h3>
-              <p className="text-gray-400 leading-relaxed font-light">
-                Skapa tydliga visioner och strukturerade processer för att nå dina drömmar.
+            <div className="text-center mb-16">
+              <h2 id="approach-title" className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Min Approach
+              </h2>
+              <div className="w-24 h-1 bg-[#ffcb33] mx-auto rounded-full"></div>
+              <p className="text-xl text-gray-300 font-light leading-relaxed max-w-3xl mx-auto mt-6">
+                Under min tid som professionell ishockeyspelare har jag själv upplevt de fördelar som mental styrka kan erbjuda. Jag erbjuder individuell coaching och träningsprogram som är skräddarsydda för att möta dina unika behov och mål.
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center space-y-6 group">
-              <div className="w-20 h-20 bg-[#4e4e4e] text-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2 border border-gray-700">
-                <Zap size={32} strokeWidth={1.5} />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+              <div className="flex flex-col items-center text-center space-y-4 p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 hover:border-[#ffcb33]/50 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg group-hover:bg-[#ffcb33] group-hover:text-[#1a1a1a] transition-all duration-300">
+                  <Shield size={28} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg font-bold text-white group-hover:text-[#ffcb33] transition-colors">Hantera Press</h3>
+                <p className="text-gray-400 leading-relaxed font-light text-sm">
+                  Utveckla verktyg för att prestera under tryck och i avgörande situationer.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white tracking-wide group-hover:text-[#ffcb33] transition-colors">Prestation</h3>
-              <p className="text-gray-400 leading-relaxed font-light">
-                Optimera din vardag genom rutiner, återhämtning och ökad självinsikt.
-              </p>
+
+              <div className="flex flex-col items-center text-center space-y-4 p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 hover:border-[#ffcb33]/50 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg group-hover:bg-[#ffcb33] group-hover:text-[#1a1a1a] transition-all duration-300">
+                  <Target size={28} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg font-bold text-white group-hover:text-[#ffcb33] transition-colors">Bibehålla Fokus</h3>
+                <p className="text-gray-400 leading-relaxed font-light text-sm">
+                  Lär dig tekniker för att hålla koncentration och fokus när det gäller som mest.
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center space-y-4 p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 hover:border-[#ffcb33]/50 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg group-hover:bg-[#ffcb33] group-hover:text-[#1a1a1a] transition-all duration-300">
+                  <TrendingUp size={28} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg font-bold text-white group-hover:text-[#ffcb33] transition-colors">Återhämta från Motgångar</h3>
+                <p className="text-gray-400 leading-relaxed font-light text-sm">
+                  Bygg mental resiliens och lär dig att komma tillbaka starkare efter svårigheter.
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center space-y-4 p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 hover:border-[#ffcb33]/50 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg group-hover:bg-[#ffcb33] group-hover:text-[#1a1a1a] transition-all duration-300">
+                  <Trophy size={28} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg font-bold text-white group-hover:text-[#ffcb33] transition-colors">Vinnande Inställning</h3>
+                <p className="text-gray-400 leading-relaxed font-light text-sm">
+                  Skapa en mentalitet som driver dig framåt och hjälper dig att nå dina mål.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust-Building Section */}
+      <section className="py-24 md:py-32 bg-[#4e4e4e]" aria-label="Erfarenhet och Kvalitet">
+        <div className="max-w-[1200px] mx-auto px-5 md:px-10">
+          <div 
+            ref={trustRef.elementRef}
+            className={`transition-all duration-1000 ${
+              trustRef.isVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center">
+              <div className="space-y-4">
+                <div className="text-5xl md:text-6xl font-bold text-[#ffcb33]">13</div>
+                <h3 className="text-xl font-bold text-white">År Professionell Karriär</h3>
+                <p className="text-gray-300 font-light">
+                  Erfarenhet från toppnivå inom professionell ishockey
+                </p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="text-5xl md:text-6xl font-bold text-[#ffcb33]">100%</div>
+                <h3 className="text-xl font-bold text-white">Individuell Coaching</h3>
+                <p className="text-gray-300 font-light">
+                  Skräddarsydda program anpassade efter dina unika behov
+                </p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="text-5xl md:text-6xl font-bold text-[#ffcb33]">∞</div>
+                <h3 className="text-xl font-bold text-white">Personlig Inriktning</h3>
+                <p className="text-gray-300 font-light">
+                  Varje idrottare får ett program utformat specifikt för sina mål
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Quote Section */}
-      <section className="py-40 bg-[#1f1f1f] border-t border-gray-800" aria-label="Citat">
+      <section className="py-20 md:py-24 bg-[#1f1f1f] border-t border-gray-800" aria-label="Citat">
         <div className="max-w-4xl mx-auto px-5 md:px-10 text-center">
           <blockquote 
             ref={quoteRef.elementRef}
-            className={`text-4xl md:text-5xl font-serif italic text-white leading-tight transition-all duration-1000 ${
+            className={`text-2xl md:text-3xl lg:text-4xl font-serif italic text-white leading-tight transition-all duration-1000 ${
               quoteRef.isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            "Skillnader som gör skillnaden."
+            "VAD ÄR SKILLNADEN - SOM GÖR SKILLNADEN, NÄR MAN LYCKAS OCH INTE LYCKAS?"
           </blockquote>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-12 md:py-16 bg-[#1f1f1f]" aria-label="Kontakta mig">
+        <div className="max-w-[1200px] mx-auto px-5 md:px-10">
+          <div 
+            ref={ctaRef.elementRef}
+            className={`max-w-3xl mx-auto text-center space-y-8 transition-all duration-1000 ${
+              ctaRef.isVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+              Upptäck skillnaden som gör skillnaden
+            </h2>
+            <p className="text-xl text-gray-300 font-light leading-relaxed">
+              Svaret ligger ofta i din mentala styrka. Genom individuell coaching och skräddarsydda träningsprogram hjälper jag dig att utveckla den mentala förmågan som skiljer de som lyckas från de som inte gör det. Oavsett om du vill nå toppen inom din sport eller förbättra ditt idrottsliga resultat – tillsammans hittar vi skillnaden som gör skillnaden för dig.
+            </p>
+            <div className="pt-4">
+              <a
+                href="/kontakt"
+                className="inline-block bg-[#ffcb33] text-[#1a1a1a] px-6 py-3 rounded-lg text-base font-medium hover:bg-[#e6b82e] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-3 mx-auto"
+              >
+                <span>Kontakta mig</span>
+                <ArrowRight size={20} />
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </div>
