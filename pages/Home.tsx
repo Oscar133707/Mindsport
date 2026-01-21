@@ -1,15 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Target, Trophy, TrendingUp, Shield } from 'lucide-react';
+import { ArrowRight, Target, Trophy, TrendingUp, Shield, Quote } from 'lucide-react';
 import heroImage from '../Images/Lägg till en rubrik.jpg';
 import hockeyPlayerIcon from '../Images/hockey-player-icon.png';
 import cjImage from '../Images/CJ image.png';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { Testimonial } from '../types';
+
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Erik Karlsson",
+    role: "Professionell Ishockeyspelare",
+    quote: "Samarbetet med MindSport har hjälpt mig att hitta lugnet i avgörande situationer. Jag har fått verktyg som jag använder dagligen.",
+  },
+  {
+    id: 2,
+    name: "Anna Andersson",
+    role: "Elittränare Fotboll",
+    quote: "Att förstå gruppdynamik och ledarskap ur ett psykologiskt perspektiv har lyft mitt team till en ny nivå.",
+  },
+  {
+    id: 3,
+    name: "Juniorakademin",
+    role: "Talangutveckling",
+    quote: "Föreläsningarna gav våra ungdomar en fantastisk inblick i vad som krävs mentalt för att bli elit.",
+  },
+];
 
 const Home: React.FC = () => {
   const [heroVisible, setHeroVisible] = useState(false);
   const aboutRef = useScrollAnimation({ threshold: 0.2 });
   const approachRef = useScrollAnimation({ threshold: 0.2 });
-  const trustRef = useScrollAnimation({ threshold: 0.2 });
+  const testimonialsRef = useScrollAnimation({ threshold: 0.2 });
   const quoteRef = useScrollAnimation({ threshold: 0.3 });
   const ctaRef = useScrollAnimation({ threshold: 0.2 });
 
@@ -46,14 +68,14 @@ const Home: React.FC = () => {
             }`}
           >
             <span className="block">
-              MENTAL PERFORM
+              MENTAL <span className="whitespace-nowrap">PERFORM
               <img 
                 src={hockeyPlayerIcon}
                 alt=""
                 className="inline-block h-[0.9em] w-auto mx-0.5 align-middle"
                 style={{ verticalAlign: 'middle' }}
               />
-              NCE
+              NCE</span>
             </span>
             <span className="block">COACH</span>
           </h1>
@@ -80,19 +102,23 @@ const Home: React.FC = () => {
         <div className="max-w-[1200px] mx-auto px-5 md:px-10">
           <div 
             ref={aboutRef.elementRef}
-            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center transition-all duration-1000 ${
+            className={`transition-all duration-1000 ${
               aboutRef.isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            {/* Text Content */}
-            <div className="space-y-6">
+            {/* Heading - shown first on all screens */}
+            <div className="mb-6 lg:mb-0">
               <h2 id="about-title" className="text-3xl md:text-4xl font-bold text-white leading-tight">
                 Varför Mental Styrka?
               </h2>
-              <div className="w-24 h-1 bg-[#ffcb33] rounded-full"></div>
-              <div className="space-y-5 text-lg text-gray-300 font-light leading-relaxed">
+              <div className="w-24 h-1 bg-[#ffcb33] rounded-full mt-4"></div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center lg:mt-6">
+              {/* Text Content */}
+              <div className="space-y-5 text-lg text-gray-300 font-light leading-relaxed order-2 lg:order-1">
                 <p>
                   Mitt namn är Carl-Johan Sjögren och jag har haft förmånen att ägna hela <strong className="text-white font-medium">13 år åt en professionell karriär inom ishockey</strong>. Under dessa år har jag fått arbeta hårt för att skaffa mig förståelse för vad som krävs för att nå framgång inom idrottens värld.
                 </p>
@@ -103,17 +129,17 @@ const Home: React.FC = () => {
                   Oavsett om du är en professionell idrottare, en amatör eller någonstans där emellan, är din <strong className="text-white font-medium">mentala inställning och styrka en avgörande faktor</strong> som kan ta din prestation till nya höjder.
                 </p>
               </div>
-            </div>
 
-            {/* Image */}
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 aspect-[4/3]">
-                <img 
-                  src={cjImage} 
-                  alt="Carl-Johan Sjögren - Professionell ishockeyspelare och mental tränare" 
-                  loading="lazy"
-                  className="w-full h-full object-cover object-center"
-                />
+              {/* Image */}
+              <div className="relative order-1 lg:order-2">
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 aspect-[4/3]">
+                  <img 
+                    src={cjImage} 
+                    alt="Carl-Johan Sjögren - Professionell ishockeyspelare och mental tränare" 
+                    loading="lazy"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -186,41 +212,42 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Trust-Building Section */}
-      <section className="py-24 md:py-32 bg-[#4e4e4e]" aria-label="Erfarenhet och Kvalitet">
+      {/* Testimonials Section */}
+      <section className="py-24 md:py-32 bg-[#4e4e4e]" aria-label="Röster från klienter">
         <div className="max-w-[1200px] mx-auto px-5 md:px-10">
           <div 
-            ref={trustRef.elementRef}
+            ref={testimonialsRef.elementRef}
             className={`transition-all duration-1000 ${
-              trustRef.isVisible 
+              testimonialsRef.isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center">
-              <div className="space-y-4">
-                <div className="text-5xl md:text-6xl font-bold text-[#ffcb33]">13</div>
-                <h3 className="text-xl font-bold text-white">År Professionell Karriär</h3>
-                <p className="text-gray-300 font-light">
-                  Erfarenhet från toppnivå inom professionell ishockey
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="text-5xl md:text-6xl font-bold text-[#ffcb33]">100%</div>
-                <h3 className="text-xl font-bold text-white">Individuell Coaching</h3>
-                <p className="text-gray-300 font-light">
-                  Skräddarsydda program anpassade efter dina unika behov
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="text-5xl md:text-6xl font-bold text-[#ffcb33]">∞</div>
-                <h3 className="text-xl font-bold text-white">Personlig Inriktning</h3>
-                <p className="text-gray-300 font-light">
-                  Varje idrottare får ett program utformat specifikt för sina mål
-                </p>
-              </div>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Röster från klienter
+              </h2>
+              <div className="w-24 h-1 bg-[#ffcb33] mx-auto rounded-full"></div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial) => (
+                <div
+                  key={testimonial.id}
+                  className="bg-[#2a2a2a] rounded-xl p-6 md:p-8 border border-gray-700 hover:border-[#ffcb33]/50 transition-all duration-300 flex flex-col h-full"
+                >
+                  <div className="mb-4">
+                    <Quote className="text-[#ffcb33] opacity-60" size={32} />
+                  </div>
+                  <blockquote className="text-gray-300 font-light leading-relaxed mb-6 text-lg flex-grow">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <div className="border-t border-gray-700 pt-4 mt-auto">
+                    <p className="font-semibold text-white">{testimonial.name}</p>
+                    <p className="text-sm text-gray-400">{testimonial.role}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
