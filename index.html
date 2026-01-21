@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MindSport AB erbjuder professionell mental träning och idrottspsykologi för idrottare, tränare och organisationer. Nå din fulla potential med evidensbaserade metoder." />
+    <meta name="keywords" content="mental träning, idrottspsykologi, prestation, ishockey, ledarskap, coaching, MindSport, Carl-Johan Sjögren" />
+    <meta name="author" content="MindSport AB" />
+    <meta name="theme-color" content="#1f1f1f" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mindsport.se/" />
+    <meta property="og:title" content="MindSport AB | Rethink your game" />
+    <meta property="og:description" content="Mental träning för prestation i världsklass. Vi hjälper dig att bygga styrkan inifrån." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1434648957308-5e6a859697e8?auto=format&fit=crop&w=1200&q=80" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mindsport.se/" />
+    <meta property="twitter:title" content="MindSport AB | Rethink your game" />
+    <meta property="twitter:description" content="Mental träning för prestation i världsklass. Vi hjälper dig att bygga styrkan inifrån." />
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1434648957308-5e6a859697e8?auto=format&fit=crop&w=1200&q=80" />
+
+    <title>MindSport AB | Rethink your game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --font-primary: 'Inter', sans-serif;
+        --bg-primary: #1f1f1f;
+        --bg-secondary: #4e4e4e;
+        --text-primary: #f5f5f5;
+        --text-secondary: #d4d4d4;
+      }
+      body {
+        font-family: var(--font-primary);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        color: #ffffff;
+      }
+      /* Smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Scroll animation styles */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      /* Smooth transitions for all elements */
+      * {
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      /* Accessibility Focus Styles */
+      :focus-visible {
+        outline: 2px solid #ffcb33; /* Yellow */
+        outline-offset: 4px;
+      }
+      /* Button Base Transition */
+      button, a {
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+      }
+      /* Utility class for screen reader only content */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      /* Custom scrollbar for dark theme */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1f1f1f;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #555;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #777;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body class="bg-[#1f1f1f] text-gray-100">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
