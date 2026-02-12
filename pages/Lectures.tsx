@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Lock, PlayCircle, FileText, ArrowRight } from 'lucide-react';
 import { Lecture } from '../types';
 
-const MOCK_PASSWORD = "mindsport2024";
+const MOCK_PASSWORD = "Mindsport25";
 
 const lecturesData: Lecture[] = [
   {

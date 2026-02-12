@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { NavItem } from '../types';
-import logoImage from '../Images/skarmavbild-2023-09-29-kl.-10.55.36-1.png';
+import logoImage from '../Images/images.jpeg';
 
 const navItems: NavItem[] = [
   { label: 'Klienter', path: '/klienter' },
@@ -13,6 +13,7 @@ const navItems: NavItem[] = [
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const menuRef = useRef<HTMLDivElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
@@ -89,6 +90,15 @@ const Navbar: React.FC = () => {
     }
   }, [isOpen]);
 
+  // Handle scroll for sticky header
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleLinkClick = () => {
     setIsOpen(false);
   };
@@ -107,14 +117,30 @@ const Navbar: React.FC = () => {
 
   return (
     <header 
-      className="fixed w-full z-50 bg-[#1f1f1f]/95 backdrop-blur-sm border-b border-gray-700 py-4 shadow-sm"
+      className={`fixed md:sticky top-0 left-0 right-0 w-full z-[1000] bg-[#1f1f1f] md:bg-[#1f1f1f]/95 backdrop-blur-[10px] border-b border-gray-700 shadow-sm transition-all duration-300 ${
+        scrolled ? 'h-16 md:h-16' : 'h-16 md:h-20'
+      }`}
+      style={{ 
+        top: 0,
+        left: 0,
+        right: 0,
+        width: '100%'
+      }}
     >
-      <div className="max-w-[1200px] mx-auto px-5 md:px-10 flex justify-between items-center">
-        <Link to="/" className="z-50 group" aria-label="MindSport AB Hem" onClick={handleLogoClick}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-10 flex justify-between items-center h-full">
+        <Link 
+          to="/" 
+          className="z-50 group h-full flex items-center min-w-[44px] min-h-[44px] p-3 -ml-3 md:-ml-6" 
+          aria-label="MindSport AB Hem" 
+          onClick={handleLogoClick}
+        >
           <img 
             src={logoImage} 
             alt="MindSport AB Logo" 
-            className="h-16 md:h-24 w-auto group-hover:opacity-80 transition-opacity"
+            className={`h-full w-auto transition-all duration-300 ${
+              scrolled ? 'scale-90 md:scale-95' : 'scale-100'
+            } group-active:opacity-80`}
+            style={{ maxHeight: '100%' }}
           />
         </Link>
 
@@ -124,9 +150,9 @@ const Navbar: React.FC = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-sm font-medium tracking-wide uppercase transition-colors hover:text-[#ffcb33] ${
+              className={`text-sm font-medium tracking-wide uppercase transition-colors min-h-[44px] flex items-center px-2 ${
                 location.pathname === item.path ? 'text-[#ffcb33]' : 'text-gray-300'
-              }`}
+              } hover:text-[#ffcb33] focus:outline-none focus:ring-2 focus:ring-[#ffcb33] focus:ring-offset-2 focus:ring-offset-[#1f1f1f] rounded`}
             >
               {item.label}
             </Link>
@@ -135,7 +161,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden z-[10000] p-3 text-white focus:outline-none focus:ring-2 focus:ring-[#ffcb33] focus:ring-offset-2 focus:ring-offset-[#1f1f1f] rounded-lg relative min-w-[44px] min-h-[44px] flex items-center justify-center transition-all duration-200 ${
+          className={`md:hidden z-[10000] text-white focus:outline-none focus:ring-2 focus:ring-[#ffcb33] focus:ring-offset-2 focus:ring-offset-[#1f1f1f] rounded-lg relative w-[44px] h-[44px] flex items-center justify-center transition-all duration-300 ${
             isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
           }`}
           onClick={toggleMenu}
@@ -143,15 +169,16 @@ const Navbar: React.FC = () => {
           aria-label="Öppna meny"
           aria-controls="mobile-menu"
           type="button"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-          <Menu size={28} />
+          <Menu size={24} strokeWidth={2} />
         </button>
       </div>
 
       {/* Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-[9998] transition-opacity duration-300 ease-in-out md:hidden"
+          className="fixed inset-0 bg-black/80 backdrop-blur-[10px] z-[9998] transition-opacity duration-300 ease-in-out md:hidden"
           onClick={() => setIsOpen(false)}
           aria-hidden={!isOpen}
         />
@@ -163,38 +190,43 @@ const Navbar: React.FC = () => {
         id="mobile-menu"
         role="navigation"
         aria-label="Mobilmeny"
-        className={`fixed top-0 right-0 h-screen w-full bg-[#1f1f1f] z-[9999] transition-transform duration-300 ease-in-out flex flex-col md:hidden shadow-2xl ${
+        className={`fixed top-0 right-0 h-screen w-full max-w-sm bg-[#1f1f1f] z-[9999] transition-transform duration-300 ease-in-out flex flex-col md:hidden shadow-2xl ${
           isOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
         }`}
         aria-hidden={!isOpen}
-        style={{ willChange: 'transform', backgroundColor: '#1f1f1f' }}
+        style={{ 
+          willChange: 'transform', 
+          backgroundColor: '#1f1f1f',
+          WebkitOverflowScrolling: 'touch'
+        }}
       >
         {/* Menu Header with Logo */}
         <div className="flex items-center justify-between p-5 border-b border-gray-700">
           <Link 
             to="/" 
-            className="z-50 group" 
+            className="z-50 group min-w-[44px] min-h-[44px] flex items-center p-2" 
             aria-label="MindSport AB Hem" 
             onClick={handleLogoClick}
           >
             <img 
               src={logoImage} 
               alt="MindSport AB Logo" 
-              className="h-16 w-auto group-hover:opacity-80 transition-opacity"
+              className="h-10 w-auto max-w-[120px] group-active:opacity-80 transition-opacity"
             />
           </Link>
           <button
-            className="p-2 text-white focus:outline-none focus:ring-2 focus:ring-[#ffcb33] rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="p-2 text-white focus:outline-none focus:ring-2 focus:ring-[#ffcb33] rounded-lg w-[44px] h-[44px] flex items-center justify-center transition-transform active:scale-95"
             onClick={toggleMenu}
             aria-label="Stäng meny"
             type="button"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
-            <X size={24} />
+            <X size={24} strokeWidth={2} />
           </button>
         </div>
 
         {/* Navigation Links */}
-        <nav className="flex flex-col flex-1 px-6 py-8 overflow-y-auto" aria-label="Mobilmeny">
+        <nav className="flex flex-col flex-1 px-5 py-6 overflow-y-auto" aria-label="Mobilmeny">
           {navItems.map((item, index) => (
             <Link
               key={item.path}
@@ -206,8 +238,9 @@ const Navbar: React.FC = () => {
                   handleLinkClick();
                 }
               }}
-              className="min-h-[48px] flex items-center justify-center text-xl font-semibold tracking-wide transition-all duration-200 py-4 px-6 rounded-lg my-2 text-gray-200 hover:text-white hover:bg-[#4e4e4e] active:bg-[#4e4e4e] focus:outline-none"
+              className="min-h-[48px] flex items-center text-lg font-semibold tracking-wide transition-all duration-200 py-4 px-4 rounded-lg mb-2 text-gray-200 active:text-white active:bg-[#4e4e4e] focus:outline-none focus:ring-2 focus:ring-[#ffcb33] focus:ring-offset-2 focus:ring-offset-[#1f1f1f]"
               tabIndex={isOpen ? 0 : -1}
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               {item.label}
             </Link>

@@ -5,6 +5,7 @@ import hockeyallsvenskanLogo from '../Images/hockeyallsvenskan.png';
 import ncaaLogo from '../Images/NCAA_logo.svg';
 import ncdcLogo from '../Images/33518cb2-98ac-461d-981f-48e7552e0bae.svg';
 import j18Logo from '../Images/Swedish_Ice_Hockey_Association_logo.svg';
+import whoWeHelpImage from '../Images/New Images/Skillnaden som gör...jpeg';
 
 const testimonials: Testimonial[] = [
   {
@@ -30,40 +31,6 @@ const testimonials: Testimonial[] = [
   }
 ];
 
-interface Client {
-  id: number;
-  name: string;
-  image: string;
-  league: string;
-}
-
-const clients: Client[] = [
-  {
-    id: 1,
-    name: "Marcus Andersson",
-    image: hockeyallsvenskanLogo,
-    league: "Hockeyallsvenskan"
-  },
-  {
-    id: 2,
-    name: "Emma Johansson",
-    image: ncaaLogo,
-    league: "NCAA Division 1"
-  },
-  {
-    id: 3,
-    name: "Lucas Bergström",
-    image: ncdcLogo,
-    league: "NCDC Junior League"
-  },
-  {
-    id: 4,
-    name: "Sofia Lindqvist",
-    image: j18Logo,
-    league: "J18 Junior (SIF)"
-  }
-];
-
 const Clients: React.FC = () => {
   const headerRef = useScrollAnimation({ threshold: 0.2 });
   const clientsRef = useScrollAnimation({ threshold: 0.1 });
@@ -85,46 +52,91 @@ const Clients: React.FC = () => {
         >
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">Klienter</h1>
           <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
-             Vi samarbetar med organisationer och ligor som sätter prestation och välmående i fokus.
+            Jag samarbetar med idrottare på olika nivåer – men också med föreningar och tränare som vill utveckla den mentala delen av sin verksamhet.
           </p>
         </div>
 
-        {/* Clients List */}
-        <div 
+        {/* Collaboration Environments */}
+        <section 
           ref={clientsRef.elementRef}
-          className={`space-y-4 md:space-y-5 mb-16 transition-all duration-1000 ${
+          className={`mb-20 transition-all duration-1000 ${
             clientsRef.isVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
           }`}
         >
-          {clients.map((client) => (
-            <div 
-              key={client.id} 
-              className="flex flex-col md:flex-row items-center md:items-center gap-4 md:gap-8 py-4 border-b border-gray-700 last:border-b-0 group hover:bg-[#4e4e4e]/30 transition-all duration-300 rounded-lg px-4"
-            >
-              <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-[#1f1f1f] rounded-lg p-3">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            {/* Text Column */}
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-white">
+                Miljöer där jag verkar
+              </h2>
+              <p className="text-lg text-gray-300 font-light leading-relaxed">
+                Mitt arbete handlar om att skapa mentalt starka miljöer där både individer och lag kan utvecklas. 
+                I samarbeten med klubbar, akademier och tränare fokuserar vi på att bygga en kultur där prestation, 
+                välmående och långsiktig utveckling går hand i hand.
+              </p>
+              <p className="text-lg text-gray-300 font-light leading-relaxed">
+                Tillsammans skräddarsyr vi upplägg för just er verklighet – oavsett om det handlar om elitidrott, 
+                juniorverksamhet eller vägen mot collegeidrott.
+              </p>
+            </div>
+
+            {/* Image / Logo Grid */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
                 <img 
-                  src={client.image} 
-                  alt={`${client.league} logo`} 
+                  src={hockeyallsvenskanLogo} 
+                  alt="Hockeyallsvenskan" 
+                  className="h-14 w-auto mb-4 object-contain"
                   loading="lazy"
-                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" 
                 />
+                <p className="text-sm text-gray-300 text-center">
+                  Erfarenhet från samarbeten inom svensk elit- och juniorhockey.
+                </p>
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-[#ffcb33] transition-colors">
-                  {client.name}
-                </h3>
-                <p className="text-base md:text-lg text-[#ffcb33] font-medium">
-                  {client.league}
+
+              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
+                <img 
+                  src={ncaaLogo} 
+                  alt="NCAA Division 1" 
+                  className="h-14 w-auto mb-4 object-contain"
+                  loading="lazy"
+                />
+                <p className="text-sm text-gray-300 text-center">
+                  Stöttar idrottare i satsningar mot collegeidrott och NCAA.
+                </p>
+              </div>
+
+              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
+                <img 
+                  src={ncdcLogo} 
+                  alt="NCDC Junior League" 
+                  className="h-14 w-auto mb-4 object-contain"
+                  loading="lazy"
+                />
+                <p className="text-sm text-gray-300 text-center">
+                  Mental coaching för spelare i internationella juniorligor.
+                </p>
+              </div>
+
+              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
+                <img 
+                  src={j18Logo} 
+                  alt="J18 Junior (SIF)" 
+                  className="h-14 w-auto mb-4 object-contain"
+                  loading="lazy"
+                />
+                <p className="text-sm text-gray-300 text-center">
+                  Utveckling av unga spelare och ledare inom svensk juniorhockey.
                 </p>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        </section>
 
         {/* Testimonials Section */}
-        <div className="border-t border-gray-700 pt-24">
+        <div className="border-t border-gray-800 pt-24">
           <div 
             ref={testimonialsRef.elementRef}
             className={`transition-all duration-1000 ${
@@ -134,20 +146,38 @@ const Clients: React.FC = () => {
             }`}
           >
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">Röster från klienter</h2>
-              <p className="text-gray-400 font-light">Erfarenheter från atleter och ledare vi arbetat med.</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Röster från klienter
+              </h2>
+              <div className="w-24 h-1 bg-[#ffcb33] mx-auto rounded-full mb-6"></div>
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                Se vad andra idrottare och tränare säger om sitt samarbete med MindSport
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {testimonials.map((item) => (
-              <div key={item.id} className="bg-[#4e4e4e] rounded-2xl p-8 hover:shadow-lg transition-all duration-300 flex flex-col h-full border border-gray-700 group">
+                <div
+                  key={item.id}
+                  className="relative bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-8 border border-gray-800 hover:border-[#ffcb33]/30 transition-all duration-300 flex flex-col h-full shadow-xl hover:shadow-2xl hover:-translate-y-2 group"
+                >
                 <div className="mb-6">
-                  <h4 className="font-bold text-white mb-1">{item.name}</h4>
+                    <div className="flex items-center gap-2 mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="w-1.5 h-1.5 rounded-full bg-[#ffcb33]"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <blockquote className="text-gray-200 font-light leading-relaxed mb-8 text-base flex-grow relative z-10">
+                    "{item.quote}"
+                  </blockquote>
+                  <div className="border-t border-gray-800 pt-6 mt-auto relative z-10">
+                    <p className="font-bold text-white text-lg mb-1">{item.name}</p>
                   <p className="text-sm text-[#ffcb33] font-medium">{item.role}</p>
                 </div>
-                <blockquote className="text-gray-300 italic leading-relaxed flex-grow">
-                  "{item.quote}"
-                </blockquote>
               </div>
             ))}
             </div>
@@ -182,16 +212,16 @@ const Clients: React.FC = () => {
               </ul>
             </div>
             <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1579952363873-27f3bade8f55?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=75" 
-                alt="Hockey team huddle" 
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            <img 
+              src={whoWeHelpImage}
+              alt="Carl-Johan Sjögren coachar på isen" 
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#4e4e4e] via-black/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-black/30"></div>
               <div className="absolute bottom-8 left-8 text-white">
                 <p className="font-semibold text-2xl mb-1">Teamutveckling</p>
-                <p className="text-sm opacity-80 font-light tracking-wide">Skapa en vinnande kultur</p>
+                <p className="text-sm opacity-80 font-light tracking-wide text-white">Skapa en vinnande kultur</p>
               </div>
             </div>
           </div>

@@ -90,19 +90,19 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#1f1f1f] font-sans text-[#f5f5f5]">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-10 py-20 md:py-32">
+    <div className="w-full bg-[#1f1f1f] font-sans text-[#f5f5f5] overflow-x-hidden">
+      <div className="max-w-[1200px] mx-auto px-5 md:px-6 lg:px-10 py-12 md:py-20 lg:py-32">
         
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+        <div className="text-center mb-12 md:mb-16">
+          <h1 className="text-[36px] md:text-[42px] lg:text-4xl xl:text-5xl font-bold tracking-tight text-white mb-4 md:mb-6 leading-[1.2]">
             Kontakt
           </h1>
-          <p className="text-xl text-gray-400 font-light max-w-2xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-gray-400 font-light max-w-2xl mx-auto leading-[1.6] px-2">
             Hör av dig till oss för att boka ett möte eller ställa frågor om våra upplägg.
           </p>
         </div>
 
-        <div className="max-w-[600px] mx-auto">
+        <div className="max-w-[600px] mx-auto px-0 md:px-0">
           {status === 'success' ? (
             <div className="bg-green-900/20 border border-green-800 rounded-2xl p-10 text-center animate-fade-in">
               <div className="w-16 h-16 bg-green-900/30 text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-800">
@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-[25px]" method="POST" noValidate>
+            <form id="contact-form" onSubmit={handleSubmit} className="space-y-5 md:space-y-[25px]" method="POST" noValidate>
               
               {/* Honeypot field (hidden) */}
               <div className="hidden" aria-hidden="true">
@@ -145,14 +145,15 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Ditt för- och efternamn"
-                  className={`w-full px-5 py-4 rounded-lg bg-[#f0f0f0] text-gray-900 border ${
+                  className={`w-full px-4 py-3 md:px-5 md:py-4 rounded-lg bg-[#f0f0f0] text-gray-900 border-2 text-base min-h-[48px] ${
                     errors.name ? 'border-red-400 focus:ring-red-200' : 'border-gray-300 focus:border-[#ffcb33] focus:ring-[#ffcb33]/20'
-                  } outline-none focus:ring-4 transition-all duration-300 placeholder-gray-500`}
+                  } outline-none focus:ring-2 transition-all duration-200 placeholder-gray-500`}
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
+                  style={{ fontSize: '16px', WebkitTapHighlightColor: 'transparent' }}
                 />
                 {errors.name && (
-                  <p id="name-error" className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                  <p id="name-error" className="mt-1 md:mt-2 text-sm text-red-400 flex items-center gap-1">
                     <AlertCircle size={14} /> {errors.name}
                   </p>
                 )}
@@ -169,14 +170,15 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="namn@exempel.se"
-                  className={`w-full px-5 py-4 rounded-lg bg-[#f0f0f0] text-gray-900 border ${
+                  className={`w-full px-4 py-3 md:px-5 md:py-4 rounded-lg bg-[#f0f0f0] text-gray-900 border-2 text-base min-h-[48px] ${
                     errors.email ? 'border-red-400 focus:ring-red-200' : 'border-gray-300 focus:border-[#ffcb33] focus:ring-[#ffcb33]/20'
-                  } outline-none focus:ring-4 transition-all duration-300 placeholder-gray-500`}
+                  } outline-none focus:ring-2 transition-all duration-200 placeholder-gray-500`}
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
+                  style={{ fontSize: '16px', WebkitTapHighlightColor: 'transparent' }}
                 />
                 {errors.email && (
-                  <p id="email-error" className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                  <p id="email-error" className="mt-1 md:mt-2 text-sm text-red-400 flex items-center gap-1">
                     <AlertCircle size={14} /> {errors.email}
                   </p>
                 )}
@@ -193,24 +195,26 @@ const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Skriv ditt meddelande här..."
-                  className={`w-full px-5 py-4 rounded-lg bg-[#f0f0f0] text-gray-900 border ${
+                  className={`w-full px-4 py-3 md:px-5 md:py-4 rounded-lg bg-[#f0f0f0] text-gray-900 border-2 text-base min-h-[120px] ${
                     errors.message ? 'border-red-400 focus:ring-red-200' : 'border-gray-300 focus:border-[#ffcb33] focus:ring-[#ffcb33]/20'
-                  } outline-none focus:ring-4 transition-all duration-300 placeholder-gray-500 resize-y`}
+                  } outline-none focus:ring-2 transition-all duration-200 placeholder-gray-500 resize-y`}
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? "message-error" : undefined}
+                  style={{ fontSize: '16px', WebkitTapHighlightColor: 'transparent' }}
                 ></textarea>
                 {errors.message && (
-                  <p id="message-error" className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                  <p id="message-error" className="mt-1 md:mt-2 text-sm text-red-400 flex items-center gap-1">
                     <AlertCircle size={14} /> {errors.message}
                   </p>
                 )}
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 md:pt-4">
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="w-full bg-[#ffcb33] text-[#1a1a1a] font-medium text-lg py-4 rounded-lg shadow-lg hover:bg-[#e6b82e] hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed border border-[#ffcb33]"
+                  className="w-full bg-[#ffcb33] text-[#1a1a1a] font-semibold text-lg py-4 h-[56px] rounded-lg shadow-lg hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed border-2 border-[#ffcb33]"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {status === 'submitting' ? (
                     <span className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
@@ -232,8 +236,8 @@ const Contact: React.FC = () => {
           )}
 
           {/* Simple footer contact info */}
-          <div className="mt-16 pt-10 border-t border-gray-700 text-center text-gray-400 text-sm space-y-2">
-            <p>Eller maila oss direkt på <a href="mailto:info@mindsport.se" className="text-[#ffcb33] hover:underline">info@mindsport.se</a></p>
+          <div className="mt-12 md:mt-16 pt-8 md:pt-10 border-t border-gray-700 text-center text-gray-400 text-sm md:text-base space-y-2 leading-[1.6]">
+            <p>Eller maila oss direkt på <a href="mailto:info@mindsport.se" className="text-[#ffcb33] hover:underline active:underline" style={{ WebkitTapHighlightColor: 'transparent' }}>info@mindsport.se</a></p>
           </div>
         </div>
       </div>

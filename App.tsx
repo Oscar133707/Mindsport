@@ -25,7 +25,7 @@ const App: React.FC = () => {
         Hoppa till huvudinnehåll
       </a>
       <Navbar />
-      <main id="main-content" className="flex-grow pt-20 focus:outline-none" tabIndex={-1}>
+      <main id="main-content" className="flex-grow pt-16 md:pt-20 focus:outline-none" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/klienter" element={<Clients />} />
