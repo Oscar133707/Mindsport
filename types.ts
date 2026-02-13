@@ -16,6 +16,7 @@ export interface VideoTestimonial {
   name: string;
   role: string;
   videoPath: string;
+  posterPath?: string;
   description?: string;
 }
 

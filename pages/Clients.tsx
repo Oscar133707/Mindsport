@@ -8,6 +8,8 @@ import j18Logo from '../Images/Swedish_Ice_Hockey_Association_logo.svg';
 import whoWeHelpImage from '../Images/New Images/Skillnaden som gör...jpeg';
 import video1 from '../klient videos/WhatsApp Video 2026-02-12 at 17.50.08.mp4';
 import video2 from '../klient videos/WhatsApp Video 2026-02-12 at 17.50.11.mp4';
+import video1Poster from '../klient videos/Screenshot 2026-02-13 at 20.31.42.png';
+import video2Poster from '../klient videos/Screenshot 2026-02-13 at 20.34.18.png';
 
 const testimonials: Testimonial[] = [
   {
@@ -39,12 +41,14 @@ const videoTestimonials: VideoTestimonial[] = [
     name: "Alexander Malinowski",
     role: "FW - NAHL, SHL, NCAA",
     videoPath: video1,
+    posterPath: video1Poster,
   },
   {
     id: 2,
     name: "Pontus Sjögren",
     role: "f.d Målvakt Hockeyallsvenskan, SHL, EIHL",
     videoPath: video2,
+    posterPath: video2Poster,
   }
 ];
 
@@ -257,6 +261,7 @@ const Clients: React.FC = () => {
                       className="w-full h-full object-cover"
                       controls
                       preload="metadata"
+                      poster={item.posterPath}
                       aria-label={`Video testimonial från ${item.name}, ${item.role}`}
                     >
                       <source src={item.videoPath} type="video/mp4" />
