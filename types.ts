@@ -11,6 +11,14 @@ export interface Testimonial {
   image?: string;
 }
 
+export interface VideoTestimonial {
+  id: number;
+  name: string;
+  role: string;
+  videoPath: string;
+  description?: string;
+}
+
 export interface Partner {
   name: string;
   url: string;

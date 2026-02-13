@@ -1,18 +1,20 @@
 import React from 'react';
-import { Testimonial } from '../types';
+import { Testimonial, VideoTestimonial } from '../types';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import hockeyallsvenskanLogo from '../Images/hockeyallsvenskan.png';
 import ncaaLogo from '../Images/NCAA_logo.svg';
 import ncdcLogo from '../Images/33518cb2-98ac-461d-981f-48e7552e0bae.svg';
 import j18Logo from '../Images/Swedish_Ice_Hockey_Association_logo.svg';
 import whoWeHelpImage from '../Images/New Images/Skillnaden som gör...jpeg';
+import video1 from '../klient videos/WhatsApp Video 2026-02-12 at 17.50.08.mp4';
+import video2 from '../klient videos/WhatsApp Video 2026-02-12 at 17.50.11.mp4';
 
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Erik Karlsson",
-    role: "Professionell Ishockeyspelare",
-    quote: "Samarbetet med MindSport har hjälpt mig att hitta lugnet i avgörande situationer. Jag har fått verktyg som jag använder dagligen.",
+    name: "Oscar Johansson",
+    role: "Landslagsutövare ITF Taekwondo",
+    quote: "Den mentala träningen med MindSport hjälpte mig att göra om negativ stress till positiv energi. Jag var mentalt förberedd och redo att prestera när det gällde - både på VM och andra tävlingar.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
   },
   {
@@ -31,10 +33,26 @@ const testimonials: Testimonial[] = [
   }
 ];
 
+const videoTestimonials: VideoTestimonial[] = [
+  {
+    id: 1,
+    name: "Alexander Malinowski",
+    role: "FW - NAHL, SHL, NCAA",
+    videoPath: video1,
+  },
+  {
+    id: 2,
+    name: "Pontus Sjögren",
+    role: "f.d Målvakt Hockeyallsvenskan, SHL, EIHL",
+    videoPath: video2,
+  }
+];
+
 const Clients: React.FC = () => {
   const headerRef = useScrollAnimation({ threshold: 0.2 });
   const clientsRef = useScrollAnimation({ threshold: 0.1 });
   const testimonialsRef = useScrollAnimation({ threshold: 0.1 });
+  const videoTestimonialsRef = useScrollAnimation({ threshold: 0.1 });
   const categoriesRef = useScrollAnimation({ threshold: 0.2 });
 
   return (
@@ -180,6 +198,61 @@ const Clients: React.FC = () => {
                 </div>
               </div>
             ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Video Testimonials Section */}
+        <div className="border-t border-gray-800 pt-24 mt-24">
+          <div
+            ref={videoTestimonialsRef.elementRef}
+            className={`transition-all duration-1000 ${
+              videoTestimonialsRef.isVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Se våra klienter berätta
+              </h2>
+              <div className="w-24 h-1 bg-[#ffcb33] mx-auto rounded-full mb-6"></div>
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                Hör direkt från idrottare som har utvecklats med MindSport
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {videoTestimonials.map((item) => (
+                <div
+                  key={item.id}
+                  className="relative bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-6 border border-gray-800 hover:border-[#ffcb33]/30 transition-all duration-300 shadow-xl hover:shadow-2xl group"
+                >
+                  {/* Video Container */}
+                  <div className="relative aspect-video mb-6 rounded-xl overflow-hidden bg-black">
+                    <video
+                      className="w-full h-full object-cover"
+                      controls
+                      preload="metadata"
+                      aria-label={`Video testimonial från ${item.name}, ${item.role}`}
+                    >
+                      <source src={item.videoPath} type="video/mp4" />
+                      <p className="text-gray-400 p-4">
+                        Din webbläsare stödjer inte videouppspelning.
+                        <a href={item.videoPath} className="text-[#ffcb33] underline ml-1">
+                          Ladda ner videon här
+                        </a>.
+                      </p>
+                    </video>
+                  </div>
+
+                  {/* Client Info */}
+                  <div className="border-t border-gray-800 pt-6">
+                    <p className="font-bold text-white text-lg mb-1">{item.name}</p>
+                    <p className="text-sm text-[#ffcb33] font-medium">{item.role}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
