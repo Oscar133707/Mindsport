@@ -11,6 +11,7 @@ const About: React.FC = () => {
   const mentalStrengthRef = useScrollAnimation({ threshold: 0.2 });
   const experienceRef = useScrollAnimation({ threshold: 0.2 });
   const missionRef = useScrollAnimation({ threshold: 0.2 });
+  const passionQuoteRef = useScrollAnimation({ threshold: 0.3 });
 
   return (
     <div className="w-full bg-[#1f1f1f] font-sans text-[#f5f5f5] overflow-x-hidden">
@@ -169,6 +170,28 @@ const About: React.FC = () => {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Passion Quote Section */}
+        <section className="py-16 md:py-20 border-t border-gray-800" aria-label="Citat om passion">
+          <div
+            ref={passionQuoteRef.elementRef}
+            className={`transition-all duration-1000 ${
+              passionQuoteRef.isVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="max-w-4xl mx-auto text-center px-4">
+              <p className="text-sm md:text-base text-[#ffcb33] font-medium uppercase tracking-wider mb-6">
+                Som jag själv lever efter
+              </p>
+              <blockquote className="text-2xl md:text-3xl lg:text-4xl font-serif italic text-white leading-tight mb-8">
+                "Gör det du tycker om, och tyck om det du gör. Då gör du det - som många andra inte gör."
+              </blockquote>
+              <div className="w-24 h-1 bg-[#ffcb33] mx-auto rounded-full"></div>
             </div>
           </div>
         </section>

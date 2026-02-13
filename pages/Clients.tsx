@@ -54,6 +54,7 @@ const Clients: React.FC = () => {
   const testimonialsRef = useScrollAnimation({ threshold: 0.1 });
   const videoTestimonialsRef = useScrollAnimation({ threshold: 0.1 });
   const categoriesRef = useScrollAnimation({ threshold: 0.2 });
+  const communityQuoteRef = useScrollAnimation({ threshold: 0.3 });
 
   return (
     <div className="w-full bg-[#1f1f1f] font-sans text-[#f5f5f5]">
@@ -149,6 +150,28 @@ const Clients: React.FC = () => {
                   Utveckling av unga spelare och ledare inom svensk juniorhockey.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Community Quote Section */}
+        <section className="py-12 md:py-16 border-t border-gray-800" aria-label="Citat om gemenskap">
+          <div
+            ref={communityQuoteRef.elementRef}
+            className={`transition-all duration-1000 ${
+              communityQuoteRef.isVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="max-w-4xl mx-auto text-center px-4">
+              <p className="text-sm md:text-base text-[#ffcb33] font-medium uppercase tracking-wider mb-6">
+                Detta är kärnan i allt vi gör
+              </p>
+              <blockquote className="text-xl md:text-2xl lg:text-3xl font-serif italic text-white leading-tight mb-8">
+                "Omge dig med folk som du ser upp till, för att aldrig tappa inspirationen till att bli bättre varje dag"
+              </blockquote>
+              <div className="w-24 h-1 bg-[#ffcb33] mx-auto rounded-full"></div>
             </div>
           </div>
         </section>

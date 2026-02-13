@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Trophy, TrendingUp, Shield, Quote, Users, UserCheck, Check } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import heroImage from '../Images/Lägg till en rubrik.jpg';
 import hockeyPlayerIcon from '../Images/hockey-player-icon.png';
 import cjImage from '../Images/New Images/A0C8D704-6197-4CC0-AEB4-F4DB2610E6F5.jpeg';
@@ -12,14 +13,26 @@ import coachImage from '../Images/New Images/pexels-franco-monsalvo-252430633-32
 import mentalTrainingImage from '../Images/New Images/32438065-B68B-4701-BFAA-3392520E4242.jpeg';
 import nybroImage from '../Images/New Images/Nybro.jpeg';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useMouseParallax } from '../hooks/useMouseParallax';
+import { useLayeredMouseParallax } from '../hooks/useLayeredMouseParallax';
 import { Testimonial } from '../types';
+import {
+  heroTextVariants,
+  staggerContainerVariants,
+  subtitleVariants,
+  ctaEntranceVariants,
+  ctaButtonVariants,
+  arrowSlideVariants
+} from '../components/animations/variants';
+import { GeometricShapes } from '../components/hero/GeometricShapes';
+import { LightStreaks } from '../components/hero/LightStreaks';
 
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Erik Karlsson",
-    role: "Professionell Ishockeyspelare",
-    quote: "Samarbetet med MindSport har hjälpt mig att hitta lugnet i avgörande situationer. Jag har fått verktyg som jag använder dagligen.",
+    name: "Oscar Johansson",
+    role: "Landslagsutövare ITF Taekwondo",
+    quote: "Den mentala träningen med MindSport hjälpte mig att göra om negativ stress till positiv energi. Jag var mentalt förberedd och redo att prestera när det gällde - både på VM och andra tävlingar.",
   },
   {
     id: 2,
@@ -37,6 +50,7 @@ const testimonials: Testimonial[] = [
 
 const Home: React.FC = () => {
   const [heroVisible, setHeroVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const heroImageRef = React.useRef<HTMLDivElement>(null);
   const heroSectionRef = React.useRef<HTMLElement>(null);
   const aboutRef = useScrollAnimation({ threshold: 0.2 });
@@ -47,6 +61,34 @@ const Home: React.FC = () => {
   const quoteRef = useScrollAnimation({ threshold: 0.3 });
   const ctaRef = useScrollAnimation({ threshold: 0.2 });
 
+  // Multi-layer parallax: Scroll-linked transforms
+  const { scrollYProgress } = useScroll({
+    target: heroSectionRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Transform scroll progress to scale and opacity values (entire section)
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.85]);
+
+  // Layer-specific scroll parallax transforms (Y-axis movement)
+  const layer1Y = useTransform(scrollYProgress, [0, 1], [0, -150]); // Deep background (slowest)
+  const layer2Y = useTransform(scrollYProgress, [0, 1], [0, -100]); // Mid-background decorative
+  const layer3Y = useTransform(scrollYProgress, [0, 1], [0, -50]);  // Background glows
+  const layer4Y = useTransform(scrollYProgress, [0, 1], [0, 0]);    // Hero image (baseline)
+  const layer5Y = useTransform(scrollYProgress, [0, 1], [0, 50]);   // Foreground highlights (fastest)
+
+  // Multi-layer parallax: Mouse-based transforms with center-point perspective
+  const layeredMouseParallax = useLayeredMouseParallax({
+    layers: [
+      { strength: 5 },   // Layer 1: Deep background
+      { strength: 8 },   // Layer 2: Geometric shapes
+      { strength: 12 },  // Layer 3: Glows
+      { strength: 15, enableRotation: true },  // Layer 4: Hero image (with 3D tilt)
+      { strength: 20 },  // Layer 5: Light streaks
+    ],
+  });
+
 
   useEffect(() => {
     // Trigger hero animation on mount
@@ -56,52 +98,33 @@ const Home: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Parallax scrolling effect - disabled on mobile for performance
+  // Detect mobile devices for conditional parallax rendering
   useEffect(() => {
-    // Disable parallax on mobile devices
-    if (window.innerWidth < 769) {
-      return;
-    }
-
-    let rafId: number;
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        rafId = requestAnimationFrame(() => {
-          if (heroImageRef.current && heroSectionRef.current) {
-            const rect = heroSectionRef.current.getBoundingClientRect();
-            const scrollY = window.scrollY;
-            const sectionTop = rect.top + scrollY;
-            const sectionHeight = rect.height;
-            const viewportHeight = window.innerHeight;
-            
-            // Calculate parallax offset when section is in view
-            if (rect.bottom > 0 && rect.top < viewportHeight) {
-              const scrollProgress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + sectionHeight)));
-              const parallaxOffset = scrollProgress * 50 * 0.5; // 0.5x speed, max 50px
-              heroImageRef.current.style.transform = `translateY(${parallaxOffset}px)`;
-            }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
+    const checkMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth < 769;
+      setIsMobile(isTouchDevice || isSmallScreen);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Old parallax effect removed - now using multi-layer parallax system
 
   return (
     <div className="flex flex-col w-full font-sans text-[#f5f5f5] bg-[#1f1f1f]">
       {/* Hero Section */}
-      <section ref={heroSectionRef} className="relative h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] flex items-center overflow-hidden bg-[#1f1f1f]" aria-label="Introduktion">
+      <motion.section
+        ref={heroSectionRef}
+        className="relative h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] flex items-center overflow-hidden bg-[#1f1f1f]"
+        aria-label="Introduktion"
+        style={{
+          scale: heroScale,
+          opacity: heroOpacity,
+        }}
+      >
         <style>{`
           @keyframes heroTextReveal {
             from {
@@ -238,65 +261,145 @@ const Home: React.FC = () => {
           }
           
         `}</style>
-        {/* Animated Gradient Background Overlay */}
-        <div className="absolute inset-0 hero-gradient-overlay pointer-events-none z-0"></div>
-        
-        <div className="max-w-[1400px] w-full mx-auto px-5 md:px-6 lg:px-10 relative z-10 h-full">
+
+        {/* Layer 1: Deep Background - Animated Gradient Overlay */}
+        <motion.div
+          className="absolute inset-0 hero-gradient-overlay pointer-events-none z-0"
+          style={!isMobile && layeredMouseParallax.isEnabled ? {
+            y: layer1Y,
+            x: layeredMouseParallax.layers[0].x,
+          } : {}}
+        />
+
+        {/* Layer 2: Mid-Background - Geometric Decorative Elements */}
+        <motion.div
+          className="absolute inset-0 z-10"
+          style={!isMobile && layeredMouseParallax.isEnabled ? {
+            y: layer2Y,
+            x: layeredMouseParallax.layers[1].x,
+          } : {}}
+        >
+          <GeometricShapes />
+        </motion.div>
+
+        {/* Layer 3: Background Glows - Ambient Light Effects */}
+        <motion.div
+          className="absolute inset-0 z-20 pointer-events-none"
+          style={!isMobile && layeredMouseParallax.isEnabled ? {
+            y: layer3Y,
+            x: layeredMouseParallax.layers[2].x,
+          } : {}}
+        >
+          {/* Ambient glow - top right */}
+          <div
+            className={`hidden lg:block absolute top-20 right-1/4 w-64 h-64 bg-[#ffcb33]/10 rounded-full blur-3xl transition-opacity duration-2000 delay-300 ${heroVisible ? 'opacity-100' : 'opacity-0'}`}
+          />
+          {/* Ambient glow - bottom left */}
+          <div
+            className={`hidden lg:block absolute bottom-32 left-1/3 w-48 h-48 bg-[#ffcb33]/8 rounded-full blur-3xl transition-opacity duration-2000 delay-500 ${heroVisible ? 'opacity-100' : 'opacity-0'}`}
+          />
+        </motion.div>
+
+        <div className="max-w-[1400px] w-full mx-auto px-5 md:px-6 lg:px-10 relative z-30 h-full">
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch h-full py-6 md:py-8 lg:py-0">
             {/* Image Column - Top on mobile */}
-            <div className="order-1 lg:order-1 flex items-stretch h-[40vh] md:h-[45vh] lg:h-full">
-              <div 
+            <div className="order-1 lg:order-1 flex items-stretch h-[40vh] md:h-[45vh] lg:h-full relative">
+              {/* Layer 4: Hero Image with 3D Tilt */}
+              <motion.div
                 ref={heroImageRef}
                 className={`hero-image-container relative w-full h-full rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 ease-out ${
-                  heroVisible 
-                    ? 'opacity-100 translate-x-0' 
+                  heroVisible
+                    ? 'opacity-100 translate-x-0'
                     : 'opacity-0 -translate-x-8'
                 }`}
+                style={!isMobile && layeredMouseParallax.isEnabled ? {
+                  y: layer4Y,
+                  x: layeredMouseParallax.layers[3].x,
+                  rotateX: layeredMouseParallax.layers[3].rotateX,
+                  rotateY: layeredMouseParallax.layers[3].rotateY,
+                  transformStyle: 'preserve-3d',
+                } : {}}
               >
-                <img 
+                <img
                   src={heroPlayerImage}
-                  alt="Mental träning för idrottare" 
-                  className="w-full h-full object-cover object-center md:object-top hero-image-zoom relative z-0 rounded-2xl"
+                  alt="Mental träning för idrottare"
+                  className="w-full h-full object-cover object-center md:object-top relative z-0 rounded-2xl"
                   style={{ objectPosition: 'center 20%' }}
                   // @ts-ignore
                   fetchPriority="high"
                 />
                 {/* Subtle dark overlay */}
                 <div className="absolute inset-0 bg-black/10 pointer-events-none z-0 rounded-2xl"></div>
-                {/* Decorative elements - hidden on mobile */}
-                <div className={`hidden lg:block absolute -bottom-4 -right-4 w-32 h-32 bg-[#ffcb33]/20 rounded-full blur-2xl transition-all duration-2000 delay-300 ${heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}></div>
-              </div>
+              </motion.div>
+
+              {/* Layer 5: Foreground Light Streaks (positioned over image column) */}
+              <motion.div
+                className="absolute inset-0 z-40 pointer-events-none"
+                style={!isMobile && layeredMouseParallax.isEnabled ? {
+                  y: layer5Y,
+                  x: layeredMouseParallax.layers[4].x,
+                } : {}}
+              >
+                <LightStreaks />
+              </motion.div>
             </div>
 
             {/* Text Column - Bottom on mobile */}
             <div className="order-2 lg:order-2 flex flex-col justify-center space-y-6 md:space-y-8 text-center lg:text-left">
               <div className="space-y-4 md:space-y-6">
                 {/* Main Heading */}
-                <h1 className="text-[40px] md:text-[48px] lg:text-7xl xl:text-8xl font-bold tracking-tight text-white leading-[1.2]">
-                  <span className="block hero-text-reveal-1">RETHINK</span>
-                  <span className="block hero-text-reveal-2">YOUR GAME</span>
-                </h1>
-                
+                <motion.h1
+                  className="text-[40px] md:text-[48px] lg:text-7xl xl:text-8xl font-bold tracking-tight text-white leading-[1.2]"
+                  initial="hidden"
+                  animate="visible"
+                  variants={staggerContainerVariants}
+                >
+                  <motion.span className="block" variants={heroTextVariants}>
+                    RETHINK
+                  </motion.span>
+                  <motion.span className="block" variants={heroTextVariants}>
+                    YOUR GAME
+                  </motion.span>
+                </motion.h1>
+
                 {/* Subtitle */}
-                <p className="text-base md:text-lg lg:text-2xl xl:text-3xl text-gray-300 font-light leading-[1.5] md:leading-relaxed hero-text-reveal-3 px-2 md:px-0">
+                <motion.p
+                  className="text-base md:text-lg lg:text-2xl xl:text-3xl text-gray-300 font-light leading-[1.5] md:leading-relaxed px-2 md:px-0"
+                  initial="hidden"
+                  animate="visible"
+                  variants={subtitleVariants}
+                >
                   Mental träning för idrottare som vill nå sin fulla potential
-                </p>
+                </motion.p>
               </div>
               
               {/* CTA Button */}
-              <div className="pt-2 md:pt-4 hero-text-reveal-4">
-                <Link
-                  to="/kontakt"
-                  className="hero-button-pulse inline-block bg-[#ffcb33] text-[#1a1a1a] w-[90%] max-w-[400px] md:w-auto md:max-w-none md:px-10 h-[56px] md:h-auto md:py-5 rounded-lg text-lg md:text-lg lg:text-xl font-bold tracking-wide uppercase hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 mx-auto md:mx-0 flex items-center justify-center"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                >
-                  Börja din resa
+              <motion.div
+                className="pt-2 md:pt-4"
+                initial="hidden"
+                animate="visible"
+                variants={ctaEntranceVariants}
+              >
+                <Link to="/kontakt">
+                  <motion.button
+                    className="inline-flex items-center justify-center gap-2 bg-[#ffcb33] text-[#1a1a1a] w-[90%] max-w-[400px] md:w-auto md:max-w-none md:px-10 h-[56px] md:h-auto md:py-5 rounded-lg text-lg md:text-lg lg:text-xl font-bold tracking-wide uppercase shadow-lg mx-auto md:mx-0"
+                    initial="initial"
+                    whileHover="hover"
+                    whileTap="tap"
+                    variants={ctaButtonVariants}
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                  >
+                    <span>Börja din resa</span>
+                    <motion.div variants={arrowSlideVariants}>
+                      <ArrowRight size={20} />
+                    </motion.div>
+                  </motion.button>
                 </Link>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* About/Introduction Section */}
       <section className="py-24 md:py-32 bg-[#1f1f1f]" aria-labelledby="about-title">
@@ -415,6 +518,16 @@ const Home: React.FC = () => {
                   Skapa en mentalitet som driver dig framåt och hjälper dig att nå dina mål.
                 </p>
               </div>
+            </div>
+
+            {/* Inline Resilience Quote */}
+            <div className="mt-16 max-w-3xl mx-auto">
+              <p className="text-xs md:text-sm text-[#ffcb33] font-medium uppercase tracking-wider mb-4 text-center">
+                Filosofin bakom vår coaching
+              </p>
+              <blockquote className="text-lg md:text-xl font-light italic text-gray-200 leading-relaxed border-l-4 border-[#ffcb33] pl-6 py-4">
+                "En motgång är inte något konstant, motgångar har alla, oavsett om du är bäst eller inte. Styrkan ligger bara i att kunna vända en motgång till framgång."
+              </blockquote>
             </div>
           </div>
         </div>
