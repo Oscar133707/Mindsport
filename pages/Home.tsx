@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Trophy, TrendingUp, Shield, Quote, Users, UserCheck, Check } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import heroImage from '../Images/Lägg till en rubrik.jpg';
 import hockeyPlayerIcon from '../Images/hockey-player-icon.png';
 import cjImage from '../Images/New Images/A0C8D704-6197-4CC0-AEB4-F4DB2610E6F5.jpeg';
 import stageImage from '../Images/New Images/Avancemang.jpeg';
 import finalBannerImage from '../Images/New Images/Lägg till en rubrik (4).jpg';
 import heroPlayerImage from '../Images/New Images/WhatsApp Image 2026-01-26 at 09.28.42.jpeg';
+import actionShotImage from '../Images/New Images/8A4ACFB3-16EF-4BBB-90C9-0F4549D60D21.png';
 import athleteImage from '../Images/New Images/nathanael-desmeules-W35u_L1l8HA-unsplash.jpg';
 import coachImage from '../Images/New Images/pexels-franco-monsalvo-252430633-32101180.jpg';
 import mentalTrainingImage from '../Images/New Images/32438065-B68B-4701-BFAA-3392520E4242.jpeg';
@@ -51,6 +52,17 @@ const testimonials: Testimonial[] = [
 const Home: React.FC = () => {
   const [heroVisible, setHeroVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Hero slideshow state
+  const SLIDE_HOLD_MS = 4000;
+  const SLIDE_TRANSITION_MS = 1200;
+  const heroImages = [heroPlayerImage, actionShotImage];
+  const heroImagePositions = ['center 20%', 'center 40%'];
+  const heroSlides = [
+    { line1: 'RETHINK', line2: 'YOUR GAME', subtitle: 'Mental träning för idrottare som vill nå sin fulla potential' },
+    { line1: 'TRAIN', line2: 'YOUR MIND', subtitle: 'Lås upp din mentala styrka och prestera när det gäller' },
+  ];
+  const [activeSlide, setActiveSlide] = useState(0);
   const heroImageRef = React.useRef<HTMLDivElement>(null);
   const heroSectionRef = React.useRef<HTMLElement>(null);
   const aboutRef = useScrollAnimation({ threshold: 0.2 });
@@ -111,7 +123,13 @@ const Home: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Old parallax effect removed - now using multi-layer parallax system
+  // Auto-advance hero slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % heroImages.length);
+    }, SLIDE_HOLD_MS + SLIDE_TRANSITION_MS);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex flex-col w-full font-sans text-[#f5f5f5] bg-[#1f1f1f]">
@@ -249,8 +267,19 @@ const Home: React.FC = () => {
             }
           }
           
+          .hero-image-zoom-delayed {
+            animation: heroImageZoom 20s ease-in-out -7.5s infinite;
+          }
+
+          @media (max-width: 768px) {
+            .hero-image-zoom-delayed {
+              animation: heroImageZoomMobile 20s ease-in-out -7.5s infinite;
+            }
+          }
+
           @media (prefers-reduced-motion: reduce) {
             .hero-image-zoom,
+            .hero-image-zoom-delayed,
             .hero-button-pulse,
             .hero-text-reveal-1,
             .hero-text-reveal-2,
@@ -259,7 +288,7 @@ const Home: React.FC = () => {
               animation: none !important;
             }
           }
-          
+
         `}</style>
 
         {/* Layer 1: Deep Background - Animated Gradient Overlay */}
@@ -320,16 +349,27 @@ const Home: React.FC = () => {
                   transformStyle: 'preserve-3d',
                 } : {}}
               >
-                <img
-                  src={heroPlayerImage}
-                  alt="Mental träning för idrottare"
-                  className="w-full h-full object-cover object-center md:object-top relative z-0 rounded-2xl"
-                  style={{ objectPosition: 'center 20%' }}
-                  // @ts-ignore
-                  fetchPriority="high"
-                />
+                {/* Slideshow: stacked images with crossfade */}
+                {heroImages.map((src, index) => (
+                  <motion.img
+                    key={src}
+                    src={src}
+                    alt={index === 0 ? "Mental träning för idrottare" : "Idrottare i aktion"}
+                    className={`absolute inset-0 w-full h-full object-cover rounded-2xl ${
+                      index === 0 ? 'hero-image-zoom' : 'hero-image-zoom-delayed'
+                    }`}
+                    style={{ objectPosition: heroImagePositions[index] }}
+                    {...(index === 0
+                      ? { fetchPriority: 'high' as any }
+                      : { loading: 'lazy' as const }
+                    )}
+                    initial={{ opacity: index === 0 ? 1 : 0 }}
+                    animate={{ opacity: activeSlide === index ? 1 : 0 }}
+                    transition={{ duration: SLIDE_TRANSITION_MS / 1000, ease: 'easeInOut' }}
+                  />
+                ))}
                 {/* Subtle dark overlay */}
-                <div className="absolute inset-0 bg-black/10 pointer-events-none z-0 rounded-2xl"></div>
+                <div className="absolute inset-0 bg-black/10 pointer-events-none z-10 rounded-2xl" />
               </motion.div>
 
               {/* Layer 5: Foreground Light Streaks (positioned over image column) */}
@@ -347,30 +387,42 @@ const Home: React.FC = () => {
             {/* Text Column - Bottom on mobile */}
             <div className="order-2 lg:order-2 flex flex-col justify-center space-y-6 md:space-y-8 text-center lg:text-left">
               <div className="space-y-4 md:space-y-6">
-                {/* Main Heading */}
+                {/* Main Heading - synced with image slideshow */}
                 <motion.h1
-                  className="text-[40px] md:text-[48px] lg:text-7xl xl:text-8xl font-bold tracking-tight text-white leading-[1.2]"
+                  className="relative text-[40px] md:text-[48px] lg:text-7xl xl:text-8xl font-bold tracking-tight text-white leading-[1.2]"
                   initial="hidden"
                   animate="visible"
                   variants={staggerContainerVariants}
                 >
-                  <motion.span className="block" variants={heroTextVariants}>
-                    RETHINK
-                  </motion.span>
-                  <motion.span className="block" variants={heroTextVariants}>
-                    YOUR GAME
-                  </motion.span>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeSlide}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.6, ease: 'easeInOut' }}
+                    >
+                      <span className="block">{heroSlides[activeSlide].line1}</span>
+                      <span className="block">{heroSlides[activeSlide].line2}</span>
+                    </motion.div>
+                  </AnimatePresence>
                 </motion.h1>
 
-                {/* Subtitle */}
-                <motion.p
-                  className="text-base md:text-lg lg:text-2xl xl:text-3xl text-gray-300 font-light leading-[1.5] md:leading-relaxed px-2 md:px-0"
-                  initial="hidden"
-                  animate="visible"
-                  variants={subtitleVariants}
-                >
-                  Mental träning för idrottare som vill nå sin fulla potential
-                </motion.p>
+                {/* Subtitle - synced with image slideshow */}
+                <div className="relative">
+                  <AnimatePresence mode="wait">
+                    <motion.p
+                      key={activeSlide}
+                      className="text-base md:text-lg lg:text-2xl xl:text-3xl text-gray-300 font-light leading-[1.5] md:leading-relaxed px-2 md:px-0"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.1 }}
+                    >
+                      {heroSlides[activeSlide].subtitle}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
               </div>
               
               {/* CTA Button */}
