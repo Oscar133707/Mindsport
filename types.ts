@@ -33,4 +33,5 @@ export interface Lecture {
   date: string;
   description: string;
   duration: string;
+  videoPath?: string;
 }
