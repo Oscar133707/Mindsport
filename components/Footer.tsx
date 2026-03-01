@@ -48,14 +48,14 @@ const Footer: React.FC = () => {
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-center md:justify-start space-x-3 text-gray-300 active:text-[#ffcb33] transition-all min-h-[44px] px-2"
+                  className="group flex items-center justify-center md:justify-start space-x-3 text-gray-300 hover:text-[#ffcb33] active:text-[#ffcb33] transition-all min-h-[44px] px-2"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {partner.logo && (
                     <img 
                       src={partner.logo} 
                       alt={partner.logoAlt}
-                      className="h-10 md:h-12 lg:h-16 w-auto object-contain opacity-80 group-active:opacity-100 transition-opacity"
+                      className="h-10 md:h-12 lg:h-16 w-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 group-active:opacity-100 transition-all"
                     />
                   )}
                   <span className="font-medium text-base">{partner.name}</span>
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
                 href="https://www.instagram.com/mindsportab/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 active:text-pink-500 transition-colors w-[44px] h-[44px] flex items-center justify-center"
+                className="text-gray-400 hover:text-pink-500 hover:scale-110 hover:bg-white/10 rounded-full active:text-pink-500 transition-all w-[44px] h-[44px] flex items-center justify-center"
                 aria-label="Instagram"
                 style={{ WebkitTapHighlightColor: 'transparent' }}
               >
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
                 href="https://www.linkedin.com/in/carl-johan-sjögren-549070233"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 active:text-[#ffcb33] transition-colors w-[44px] h-[44px] flex items-center justify-center"
+                className="text-gray-400 hover:text-[#0077b5] hover:scale-110 hover:bg-white/10 rounded-full active:text-[#ffcb33] transition-all w-[44px] h-[44px] flex items-center justify-center"
                 aria-label="LinkedIn"
                 style={{ WebkitTapHighlightColor: 'transparent' }}
               >
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
               </a>
             </div>
             <div className="text-sm md:text-base text-gray-400">
-              <a href="mailto:info@mindsport.se" className="active:text-[#ffcb33] transition-colors min-h-[44px] flex items-center justify-center md:justify-start" style={{ WebkitTapHighlightColor: 'transparent' }}>
+              <a href="mailto:info@mindsport.se" className="hover:text-[#ffcb33] hover:underline active:text-[#ffcb33] transition-colors min-h-[44px] flex items-center justify-center md:justify-start" style={{ WebkitTapHighlightColor: 'transparent' }}>
                 info@mindsport.se
               </a>
             </div>
