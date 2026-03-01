@@ -137,10 +137,7 @@ const Navbar: React.FC = () => {
           <img 
             src={logoImage} 
             alt="MindSport AB Logo" 
-            className={`h-full w-auto transition-all duration-300 ${
-              scrolled ? 'scale-90 md:scale-95' : 'scale-100'
-            } group-active:opacity-80`}
-            style={{ maxHeight: '100%' }}
+            className="h-10 w-auto group-active:opacity-80"
           />
         </Link>
 
