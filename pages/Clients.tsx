@@ -129,7 +129,7 @@ const Clients: React.FC = () => {
 
             {/* Image / Logo Grid */}
             <div className="grid grid-cols-2 gap-6">
-              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
+              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 md:hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
                 <img 
                   src={hockeyallsvenskanLogo} 
                   alt="Hockeyallsvenskan" 
@@ -141,7 +141,7 @@ const Clients: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
+              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 md:hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
                 <img 
                   src={ncaaLogo} 
                   alt="NCAA Division 1" 
@@ -153,7 +153,7 @@ const Clients: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
+              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 md:hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
                 <img 
                   src={ncdcLogo} 
                   alt="NCDC Junior League" 
@@ -165,7 +165,7 @@ const Clients: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
+              <div className="bg-[#2a2a2a] rounded-2xl p-6 flex flex-col items-center justify-center border border-gray-700 md:hover:border-[#ffcb33]/40 transition-all duration-300 shadow-lg">
                 <img 
                   src={j18Logo} 
                   alt="J18 Junior (SIF)" 
@@ -226,7 +226,7 @@ const Clients: React.FC = () => {
             {testimonials.slice(0, showAll ? 6 : 3).map((item) => (
                 <div
                   key={item.id}
-                  className="relative bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-8 border border-gray-800 hover:border-[#ffcb33]/30 transition-all duration-300 flex flex-col h-full shadow-xl hover:shadow-2xl hover:-translate-y-2 group"
+                  className="relative bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-8 border border-gray-800 md:hover:border-[#ffcb33]/30 transition-all duration-300 flex flex-col h-full shadow-xl md:hover:shadow-2xl md:hover:-translate-y-2 group"
                 >
                 <div className="mb-6">
                     <div className="flex items-center gap-2 mb-4">
@@ -252,7 +252,7 @@ const Clients: React.FC = () => {
             <div className="text-center mt-10">
               <button
                 onClick={() => setShowAll(!showAll)}
-                className="px-8 py-3 border border-[#ffcb33] text-[#ffcb33] font-medium rounded-full hover:bg-[#ffcb33] hover:text-black transition-all duration-300"
+                className="px-8 py-3 border border-[#ffcb33] text-[#ffcb33] font-medium rounded-full md:hover:bg-[#ffcb33] md:hover:text-black transition-all duration-300"
               >
                 {showAll ? 'Visa färre' : 'Läs mer'}
               </button>
@@ -284,7 +284,7 @@ const Clients: React.FC = () => {
               {videoTestimonials.map((item) => (
                 <div
                   key={item.id}
-                  className="relative bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-6 border border-gray-800 hover:border-[#ffcb33]/30 transition-all duration-300 shadow-xl hover:shadow-2xl group"
+                  className="relative bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-6 border border-gray-800 md:hover:border-[#ffcb33]/30 transition-all duration-300 shadow-xl md:hover:shadow-2xl group"
                 >
                   {/* Video Container */}
                   <div className="relative aspect-video mb-6 rounded-xl overflow-hidden bg-black">

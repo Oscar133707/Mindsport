@@ -149,7 +149,7 @@ const Navbar: React.FC = () => {
               to={item.path}
               className={`text-sm font-medium tracking-wide uppercase transition-colors min-h-[44px] flex items-center px-2 ${
                 location.pathname === item.path ? 'text-[#ffcb33]' : 'text-gray-300'
-              } hover:text-[#ffcb33] focus:outline-none focus:ring-2 focus:ring-[#ffcb33] focus:ring-offset-2 focus:ring-offset-[#1f1f1f] rounded`}
+              } md:hover:text-[#ffcb33] focus:outline-none focus:ring-2 focus:ring-[#ffcb33] focus:ring-offset-2 focus:ring-offset-[#1f1f1f] rounded`}
             >
               {item.label}
             </Link>

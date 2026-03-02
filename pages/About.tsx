@@ -51,7 +51,7 @@ const About: React.FC = () => {
                     src={cjImage} 
                     alt="Carl-Johan Sjögren - Professionell ishockeyspelare och mental tränare" 
                     loading="lazy"
-                    className="w-full h-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    className="w-full h-full object-contain transition-transform duration-500 ease-in-out md:group-hover:scale-110"
                   />
                 </div>
               </div>
@@ -77,7 +77,7 @@ const About: React.FC = () => {
                     src={mentalStrengthImage} 
                     alt="Mental träning i idrott" 
                     loading="lazy"
-                    className="w-full h-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    className="w-full h-full object-contain transition-transform duration-500 ease-in-out md:group-hover:scale-110"
                   />
                 </div>
               </div>
@@ -127,7 +127,7 @@ const About: React.FC = () => {
                     src={experienceImage} 
                     alt="Carl-Johan Sjögren - Erfarenhet från elitnivå" 
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-in-out md:group-hover:scale-110"
                     style={{ objectPosition: '50% 35%' }}
                   />
                 </div>
@@ -154,7 +154,7 @@ const About: React.FC = () => {
                     src={missionImage} 
                     alt="Carl-Johan Sjögren - Mitt uppdrag" 
                     loading="lazy"
-                    className="w-full h-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    className="w-full h-full object-contain transition-transform duration-500 ease-in-out md:group-hover:scale-110"
                   />
                 </div>
               </div>
@@ -205,7 +205,7 @@ const About: React.FC = () => {
             <div className="pt-2 md:pt-4">
               <Link
                 to="/kontakt"
-                className="inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 h-[56px] md:h-auto flex items-center justify-center rounded-lg text-base font-semibold tracking-wide hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 h-[56px] md:h-auto flex items-center justify-center rounded-lg text-base font-semibold tracking-wide md:hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-300 shadow-lg md:hover:shadow-xl transform md:hover:-translate-y-1"
                 style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 Kontakta mig

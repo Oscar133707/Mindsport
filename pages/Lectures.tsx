@@ -137,7 +137,7 @@ const Lectures: React.FC = () => {
 
                     <button
                       type="submit"
-                      className="w-full bg-[#ffcb33] text-[#1a1a1a] font-medium text-lg py-4 rounded-lg shadow-lg hover:bg-[#e6b82e] hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2"
+                      className="w-full bg-[#ffcb33] text-[#1a1a1a] font-medium text-lg py-4 rounded-lg shadow-lg md:hover:bg-[#e6b82e] md:hover:shadow-xl md:hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2"
                     >
                       <span>Logga in</span>
                       <ArrowRight size={18} />
@@ -163,7 +163,7 @@ const Lectures: React.FC = () => {
                 </div>
                 <button
                   onClick={() => setIsAuthenticated(false)}
-                  className="text-sm font-medium text-gray-400 hover:text-red-400 transition-colors py-2 px-4 rounded-lg hover:bg-[#4e4e4e] border border-transparent hover:border-gray-600"
+                  className="text-sm font-medium text-gray-400 md:hover:text-red-400 transition-colors py-2 px-4 rounded-lg md:hover:bg-[#4e4e4e] border border-transparent md:hover:border-gray-600"
                 >
                   Logga ut
                 </button>
@@ -171,14 +171,14 @@ const Lectures: React.FC = () => {
 
               <div className="grid gap-6">
                 {lecturesData.map((lecture) => (
-                  <div key={lecture.id} className="bg-[#4e4e4e] border border-gray-700 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+                  <div key={lecture.id} className="bg-[#4e4e4e] border border-gray-700 rounded-2xl p-8 md:hover:shadow-xl transition-all duration-300">
                     <div className="flex flex-col md:flex-row md:items-center justify-between group">
                       <div className="flex-1 mb-6 md:mb-0 pr-4">
                         <div className="flex items-center space-x-3 mb-3">
                           <span className="bg-[#ffcb33]/30 text-[#ffcb33] border border-[#ffcb33]/50 text-xs px-2.5 py-1 rounded-full font-semibold uppercase tracking-wider">Video</span>
                           <span className="text-gray-500 text-xs font-medium">{lecture.date}</span>
                         </div>
-                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#ffcb33] transition-colors">
+                        <h3 className="text-2xl font-bold text-white mb-2 md:group-hover:text-[#ffcb33] transition-colors">
                           {lecture.title}
                         </h3>
                         <p className="text-gray-400 font-light leading-relaxed max-w-2xl">
@@ -190,7 +190,7 @@ const Lectures: React.FC = () => {
                         <div className="flex space-x-3 w-full md:w-auto">
                           <button
                             onClick={() => setPlayingId(playingId === lecture.id ? null : lecture.id)}
-                            className="flex-1 md:flex-none flex items-center justify-center space-x-2 bg-white text-[#1a1a1a] px-8 py-3 rounded-lg text-sm font-medium hover:bg-[#ffcb33] hover:text-[#1a1a1a] hover:shadow-lg transition-all duration-300"
+                            className="flex-1 md:flex-none flex items-center justify-center space-x-2 bg-white text-[#1a1a1a] px-8 py-3 rounded-lg text-sm font-medium md:hover:bg-[#ffcb33] md:hover:text-[#1a1a1a] md:hover:shadow-lg transition-all duration-300"
                           >
                             {playingId === lecture.id ? <X size={18} /> : <PlayCircle size={18} />}
                             <span>{playingId === lecture.id ? 'Stäng' : 'Titta'}</span>

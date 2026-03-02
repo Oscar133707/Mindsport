@@ -486,7 +486,7 @@ const Home: React.FC = () => {
                 </div>
                 <Link
                   to="/om"
-                  className="inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 rounded-lg text-base font-semibold tracking-wide hover:bg-[#e6b82e] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 rounded-lg text-base font-semibold tracking-wide md:hover:bg-[#e6b82e] transition-all duration-300 shadow-lg md:hover:shadow-xl transform md:hover:-translate-y-1"
                 >
                   Läs mer om Carl-Johan
                 </Link>
@@ -531,41 +531,41 @@ const Home: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 hover:border-[#ffcb33]/50 transition-all duration-300 group h-full">
-                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg group-hover:bg-[#ffcb33] group-hover:text-[#1a1a1a] transition-all duration-300 mb-4">
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 md:hover:border-[#ffcb33]/50 transition-all duration-300 group h-full">
+                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg md:group-hover:bg-[#ffcb33] md:group-hover:text-[#1a1a1a] transition-all duration-300 mb-4">
                   <Shield size={28} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg font-bold text-white group-hover:text-[#ffcb33] transition-colors mb-4 min-h-[3rem] flex items-center justify-center">Hantera Press</h3>
+                <h3 className="text-lg font-bold text-white md:group-hover:text-[#ffcb33] transition-colors mb-4 min-h-[3rem] flex items-center justify-center">Hantera Press</h3>
                 <p className="text-gray-400 leading-relaxed font-light text-sm mt-auto">
                   Utveckla verktyg för att prestera under tryck och i avgörande situationer.
                 </p>
               </div>
 
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 hover:border-[#ffcb33]/50 transition-all duration-300 group h-full">
-                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg group-hover:bg-[#ffcb33] group-hover:text-[#1a1a1a] transition-all duration-300 mb-4">
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 md:hover:border-[#ffcb33]/50 transition-all duration-300 group h-full">
+                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg md:group-hover:bg-[#ffcb33] md:group-hover:text-[#1a1a1a] transition-all duration-300 mb-4">
                   <Target size={28} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg font-bold text-white group-hover:text-[#ffcb33] transition-colors mb-4 min-h-[3rem] flex items-center justify-center">Bibehålla Fokus</h3>
+                <h3 className="text-lg font-bold text-white md:group-hover:text-[#ffcb33] transition-colors mb-4 min-h-[3rem] flex items-center justify-center">Bibehålla Fokus</h3>
                 <p className="text-gray-400 leading-relaxed font-light text-sm mt-auto">
                   Lär dig tekniker för att hålla koncentration och fokus när det gäller som mest.
                 </p>
               </div>
 
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 hover:border-[#ffcb33]/50 transition-all duration-300 group h-full">
-                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg group-hover:bg-[#ffcb33] group-hover:text-[#1a1a1a] transition-all duration-300 mb-4">
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 md:hover:border-[#ffcb33]/50 transition-all duration-300 group h-full">
+                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg md:group-hover:bg-[#ffcb33] md:group-hover:text-[#1a1a1a] transition-all duration-300 mb-4">
                   <TrendingUp size={28} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg font-bold text-white group-hover:text-[#ffcb33] transition-colors mb-4 min-h-[3rem] flex items-center justify-center">Återhämta från Motgångar</h3>
+                <h3 className="text-lg font-bold text-white md:group-hover:text-[#ffcb33] transition-colors mb-4 min-h-[3rem] flex items-center justify-center">Återhämta från Motgångar</h3>
                 <p className="text-gray-400 leading-relaxed font-light text-sm mt-auto">
                   Bygg mental resiliens och lär dig att komma tillbaka starkare efter svårigheter.
                 </p>
               </div>
 
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 hover:border-[#ffcb33]/50 transition-all duration-300 group h-full">
-                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg group-hover:bg-[#ffcb33] group-hover:text-[#1a1a1a] transition-all duration-300 mb-4">
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2a2a2a] border border-gray-800 md:hover:border-[#ffcb33]/50 transition-all duration-300 group h-full">
+                <div className="w-16 h-16 bg-[#4e4e4e] text-white rounded-xl flex items-center justify-center shadow-lg md:group-hover:bg-[#ffcb33] md:group-hover:text-[#1a1a1a] transition-all duration-300 mb-4">
                   <Trophy size={28} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg font-bold text-white group-hover:text-[#ffcb33] transition-colors mb-4 min-h-[3rem] flex items-center justify-center">Vinnande Inställning</h3>
+                <h3 className="text-lg font-bold text-white md:group-hover:text-[#ffcb33] transition-colors mb-4 min-h-[3rem] flex items-center justify-center">Vinnande Inställning</h3>
                 <p className="text-gray-400 leading-relaxed font-light text-sm mt-auto">
                   Skapa en mentalitet som driver dig framåt och hjälper dig att nå dina mål.
                 </p>
@@ -659,7 +659,7 @@ const Home: React.FC = () => {
                     <div className="mt-auto">
                       <Link
                         to="/kontakt"
-                        className="w-full md:w-auto inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 h-[56px] md:h-auto flex items-center justify-center rounded-lg text-base md:text-base font-semibold tracking-wide hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        className="w-full md:w-auto inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 h-[56px] md:h-auto flex items-center justify-center rounded-lg text-base md:text-base font-semibold tracking-wide md:hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-300 shadow-lg md:hover:shadow-xl transform md:hover:-translate-y-1"
                         style={{ WebkitTapHighlightColor: 'transparent' }}
                       >
                         Kom igång
@@ -730,7 +730,7 @@ const Home: React.FC = () => {
                     <div className="mt-auto">
                       <Link
                         to="/kontakt"
-                        className="w-full md:w-auto inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 h-[56px] md:h-auto flex items-center justify-center rounded-lg text-base md:text-base font-semibold tracking-wide hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        className="w-full md:w-auto inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 h-[56px] md:h-auto flex items-center justify-center rounded-lg text-base md:text-base font-semibold tracking-wide md:hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-300 shadow-lg md:hover:shadow-xl transform md:hover:-translate-y-1"
                         style={{ WebkitTapHighlightColor: 'transparent' }}
                       >
                         Boka en tid
@@ -769,7 +769,7 @@ const Home: React.FC = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={testimonial.id}
-                  className="relative bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-8 border border-gray-800 hover:border-[#ffcb33]/30 transition-all duration-300 flex flex-col h-full shadow-xl hover:shadow-2xl hover:-translate-y-2 group"
+                  className="relative bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-8 border border-gray-800 md:hover:border-[#ffcb33]/30 transition-all duration-300 flex flex-col h-full shadow-xl md:hover:shadow-2xl md:hover:-translate-y-2 group"
                 >
                   <div className="mb-6">
                     <div className="flex items-center gap-2 mb-4">
@@ -820,7 +820,7 @@ const Home: React.FC = () => {
                     src={mentalTrainingImage} 
                     alt="Föreläsning om mental träning" 
                     loading="lazy"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 ease-in-out md:group-hover:scale-110"
                   />
                 </div>
                 <div className="bg-[#2a2a2a] p-6">
@@ -835,7 +835,7 @@ const Home: React.FC = () => {
                     src={nybroImage} 
                     alt="Föreläsning om att prestera under tryck" 
                     loading="lazy"
-                    className="w-full h-full object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    className="w-full h-full object-cover object-center transition-transform duration-500 ease-in-out md:group-hover:scale-110"
                   />
                 </div>
                 <div className="bg-[#2a2a2a] p-6">
@@ -850,7 +850,7 @@ const Home: React.FC = () => {
                     src={stageImage} 
                     alt="Föreläsning om ledarskap och gruppdynamik" 
                     loading="lazy"
-                    className="w-full h-full object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    className="w-full h-full object-cover object-center transition-transform duration-500 ease-in-out md:group-hover:scale-110"
                   />
                 </div>
                 <div className="bg-[#2a2a2a] p-6">
@@ -867,7 +867,7 @@ const Home: React.FC = () => {
               <div className="pt-4">
                 <Link
                   to="/forelasningar"
-                  className="inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 rounded-lg text-base font-semibold tracking-wide hover:bg-[#e6b82e] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 rounded-lg text-base font-semibold tracking-wide md:hover:bg-[#e6b82e] transition-all duration-300 shadow-lg md:hover:shadow-xl transform md:hover:-translate-y-1"
                 >
                   Se alla föreläsningar
                 </Link>
@@ -928,7 +928,7 @@ const Home: React.FC = () => {
                 <div className="mt-8">
                   <Link
                     to="/kontakt"
-                    className="inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 rounded-lg text-base font-semibold tracking-wide hover:bg-[#e6b82e] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    className="inline-block bg-[#ffcb33] text-[#1a1a1a] px-8 py-4 rounded-lg text-base font-semibold tracking-wide md:hover:bg-[#e6b82e] transition-all duration-300 shadow-lg md:hover:shadow-xl transform md:hover:-translate-y-1"
                   >
                     Kontakta mig
                   </Link>

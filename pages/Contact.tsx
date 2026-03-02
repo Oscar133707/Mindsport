@@ -112,7 +112,7 @@ const Contact: React.FC = () => {
               <p className="text-gray-300 mb-8">Ditt meddelande har skickats. Vi återkommer till dig så snart vi kan.</p>
               <button 
                 onClick={() => setStatus('idle')}
-                className="text-green-400 font-medium hover:text-green-300 underline underline-offset-4"
+                className="text-green-400 font-medium md:hover:text-green-300 underline underline-offset-4"
               >
                 Skicka ett nytt meddelande
               </button>
@@ -213,7 +213,7 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="w-full bg-[#ffcb33] text-[#1a1a1a] font-semibold text-lg py-4 h-[56px] rounded-lg shadow-lg hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed border-2 border-[#ffcb33]"
+                  className="w-full bg-[#ffcb33] text-[#1a1a1a] font-semibold text-lg py-4 h-[56px] rounded-lg shadow-lg md:hover:bg-[#e6b82e] active:bg-[#d4a626] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed border-2 border-[#ffcb33]"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {status === 'submitting' ? (
@@ -237,7 +237,7 @@ const Contact: React.FC = () => {
 
           {/* Simple footer contact info */}
           <div className="mt-12 md:mt-16 pt-8 md:pt-10 border-t border-gray-700 text-center text-gray-400 text-sm md:text-base space-y-2 leading-[1.6]">
-            <p>Eller maila oss direkt på <a href="mailto:info@mindsport.se" className="text-[#ffcb33] hover:underline active:underline" style={{ WebkitTapHighlightColor: 'transparent' }}>info@mindsport.se</a></p>
+            <p>Eller maila oss direkt på <a href="mailto:info@mindsport.se" className="text-[#ffcb33] md:hover:underline active:underline" style={{ WebkitTapHighlightColor: 'transparent' }}>info@mindsport.se</a></p>
           </div>
         </div>
       </div>
