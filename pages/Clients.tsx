@@ -17,21 +17,42 @@ const testimonials: Testimonial[] = [
     name: "Oscar Johansson",
     role: "Landslagsutövare ITF Taekwondo",
     quote: "Den mentala träningen med MindSport hjälpte mig att göra om negativ stress till positiv energi. Jag var mentalt förberedd och redo att prestera när det gällde - både på VM och andra tävlingar.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+    image: ""
   },
   {
     id: 2,
-    name: "Anna Andersson",
-    role: "Elittränare Fotboll",
-    quote: "Att förstå gruppdynamik och ledarskap ur ett psykologiskt perspektiv har lyft mitt team till en ny nivå.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+    name: "Gustav Stenberg",
+    role: "Ishockeyspelare",
+    quote: "Jag ville utveckla delar av mitt spel och få nya perspektiv. Med Mindsport har jag fått en starkare inställning, tydligare lösningar och verktyg att bli bättre. Jag rekommenderar det starkt.",
+    image: ""
   },
   {
     id: 3,
-    name: "Juniorakademin",
-    role: "Talangutveckling",
-    quote: "Föreläsningarna gav våra ungdomar en fantastisk inblick i vad som krävs mentalt för att bli elit.",
-    image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+    name: "Maja B",
+    role: "Fotbollsspelare",
+    quote: "Jag ville ta nästa steg i min utveckling och jobba med både mitt fokus och självförtroende på planen. Genom Mindsport fick jag nya konkreta verktyg och en tydligare inställning till min prestation. Det har gjort stor skillnad för mig, och jag rekommenderar det verkligen till andra spelare.",
+    image: ""
+  },
+  {
+    id: 4,
+    name: "Jonathan D",
+    role: "Ishockeyspelare",
+    quote: "Att ha en mentalcoach vid sidan av hockeyn har betytt enormt. Att bryta ned spelet och analysera det har gett stor betydelse för min utveckling – både som spelare och person. CJ visar hjärta och engagemang för sina klienter. Ett solklart val.",
+    image: ""
+  },
+  {
+    id: 5,
+    name: "Elliot F",
+    role: "Ishockeyspelare",
+    quote: "Att fokusera bara på det fysiska skapar stress när motgångar kommer. Med Mindsport har jag lättare att se från andra perspektiv utan att övertänka. Det blir lättare både mentalt och fysiskt när skallen är på rätt plats. CJ förstår situationen man är i – ett definitivt rekommenderat val.",
+    image: ""
+  },
+  {
+    id: 6,
+    name: "Martin R",
+    role: "Ishockeyspelare",
+    quote: "Jag hade grundkunskap om mental träning men förstod inte nyttan på isen. Genom Mindsport har jag fått konkreta metoder, större självkännedom och verktyg att plocka fram mitt bästa. Jag har utvecklats mer än jag trodde var möjligt.",
+    image: ""
   }
 ];
 

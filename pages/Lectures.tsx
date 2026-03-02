@@ -91,7 +91,7 @@ const Lectures: React.FC = () => {
                     src={lecturesHeroImage}
                     alt="Föreläsning med publik i en mörk salong"
                     loading="eager"
-                    className="w-full h-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               </div>

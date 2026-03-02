@@ -37,15 +37,15 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "Anna Andersson",
-    role: "Elittränare Fotboll",
-    quote: "Att förstå gruppdynamik och ledarskap ur ett psykologiskt perspektiv har lyft mitt team till en ny nivå.",
+    name: "Gustav Stenberg",
+    role: "Ishockeyspelare",
+    quote: "Jag ville utveckla delar av mitt spel och få nya perspektiv. Med Mindsport har jag fått en starkare inställning, tydligare lösningar och verktyg att bli bättre. Jag rekommenderar det starkt.",
   },
   {
     id: 3,
-    name: "Juniorakademin",
-    role: "Talangutveckling",
-    quote: "Föreläsningarna gav våra ungdomar en fantastisk inblick i vad som krävs mentalt för att bli elit.",
+    name: "Maja B",
+    role: "Fotbollsspelare",
+    quote: "Jag ville ta nästa steg i min utveckling och jobba med både mitt fokus och självförtroende på planen. Genom Mindsport fick jag nya konkreta verktyg och en tydligare inställning till min prestation. Det har gjort stor skillnad.",
   },
 ];
 
