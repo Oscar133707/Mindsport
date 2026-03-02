@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Testimonial, VideoTestimonial } from '../types';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import hockeyallsvenskanLogo from '../Images/hockeyallsvenskan.png';
@@ -80,6 +80,7 @@ const Clients: React.FC = () => {
   const videoTestimonialsRef = useScrollAnimation({ threshold: 0.1 });
   const categoriesRef = useScrollAnimation({ threshold: 0.2 });
   const communityQuoteRef = useScrollAnimation({ threshold: 0.3 });
+  const [showAll, setShowAll] = useState(false);
 
   return (
     <div className="w-full bg-[#1f1f1f] font-sans text-[#f5f5f5]">
@@ -222,7 +223,7 @@ const Clients: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {testimonials.map((item) => (
+            {testimonials.slice(0, showAll ? 6 : 3).map((item) => (
                 <div
                   key={item.id}
                   className="relative bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-8 border border-gray-800 hover:border-[#ffcb33]/30 transition-all duration-300 flex flex-col h-full shadow-xl hover:shadow-2xl hover:-translate-y-2 group"
@@ -246,6 +247,15 @@ const Clients: React.FC = () => {
                 </div>
               </div>
             ))}
+            </div>
+
+            <div className="text-center mt-10">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="px-8 py-3 border border-[#ffcb33] text-[#ffcb33] font-medium rounded-full hover:bg-[#ffcb33] hover:text-black transition-all duration-300"
+              >
+                {showAll ? 'Visa färre' : 'Läs mer'}
+              </button>
             </div>
           </div>
         </div>
