@@ -5,7 +5,7 @@ import hockeyallsvenskanLogo from '../Images/hockeyallsvenskan.png';
 import ncaaLogo from '../Images/NCAA_logo.svg';
 import ncdcLogo from '../Images/33518cb2-98ac-461d-981f-48e7552e0bae.svg';
 import j18Logo from '../Images/Swedish_Ice_Hockey_Association_logo.svg';
-import whoWeHelpImage from '../Images/New Images/Skillnaden som gör...jpeg';
+import whoWeHelpImage from '../Images/New Images/Skillnaden-som-gor.jpeg';
 import video1 from '../klient videos/WhatsApp Video 2026-02-12 at 17.50.08.mp4';
 import video2 from '../klient videos/WhatsApp Video 2026-02-12 at 17.50.11.mp4';
 import video1Poster from '../klient videos/Screenshot 2026-02-13 at 20.31.42.png';
