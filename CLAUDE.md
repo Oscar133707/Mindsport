@@ -26,6 +26,11 @@ Mindsport AB is a mental training platform for athletes who want to reach their 
 - **Dev Server:** Port 3002
 - **Configuration:** vercel.json in project root
 
+### MCP Servers (configured in ~/.claude/settings.json)
+- **Vercel MCP:** `https://mcp.vercel.com` — manage env vars, deployments, project config (OAuth, restart Claude Code to authenticate)
+- **Resend MCP:** `npx resend-mcp` — manage email sending, domains, API keys (key configured)
+- **Contact form email:** sends to `info@mindsport.se` via `api/contact.ts` using Resend (`RESEND_API_KEY` env var must be set in Vercel)
+
 ## Project Structure
 
 ```

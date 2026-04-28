@@ -13,6 +13,7 @@ import athleteImage from '../Images/New Images/nathanael-desmeules-W35u_L1l8HA-u
 import coachImage from '../Images/New Images/pexels-franco-monsalvo-252430633-32101180.jpg';
 import mentalTrainingImage from '../Images/New Images/32438065-B68B-4701-BFAA-3392520E4242.jpeg';
 import nybroImage from '../Images/New Images/Nybro.jpeg';
+import rfSisuImage from '../Images/New Images/RF Sisu.png';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useMouseParallax } from '../hooks/useMouseParallax';
 import { useLayeredMouseParallax } from '../hooks/useLayeredMouseParallax';
@@ -475,7 +476,7 @@ const Home: React.FC = () => {
                 </p>
                 <div className="space-y-5 text-lg text-gray-300 font-light leading-relaxed mb-8">
                   <p>
-                    Mitt namn är Carl-Johan Sjögren och jag har haft förmånen att ägna hela <strong className="text-white font-medium">13 år åt en professionell karriär inom ishockey</strong>. Under dessa år har jag fått arbeta hårt för att skaffa mig förståelse för vad som krävs för att nå framgång inom idrottens värld.
+                    Mitt namn är Carl-Johan Sjögren och jag har haft förmånen att ägna hela <strong className="text-white font-medium">över 15 år åt en professionell karriär inom ishockey</strong>. Under dessa år har jag fått arbeta hårt för att skaffa mig förståelse för vad som krävs för att nå framgång inom idrottens värld.
                   </p>
                   <p>
                     Det har gett mig insikten att <strong className="text-white font-medium">prestation handlar om mer än bara fysisk förmåga</strong> – det handlar också om din mentala styrka. Mental styrka är en avgörande faktor för att nå framgång inom idrott. Det handlar om att utveckla och träna din mentala förmåga på samma sätt som du tränar din fysiska.
@@ -490,6 +491,22 @@ const Home: React.FC = () => {
                 >
                   Läs mer om Carl-Johan
                 </Link>
+                {/* RF-SISU Credential Card */}
+                <div className="mt-8 flex items-center gap-5 bg-[#2a2a2a] border border-gray-700 rounded-xl px-5 py-4">
+                  <img
+                    src={rfSisuImage}
+                    alt="RF Sisu logotyp"
+                    className="w-20 h-20 object-contain bg-white rounded-xl p-2 shrink-0"
+                  />
+                  <div>
+                    <p className="text-white font-semibold text-base leading-snug">
+                      Certifierad mental coach
+                    </p>
+                    <p className="text-gray-400 text-sm font-light mt-1 leading-snug">
+                      Kopplad till Riksidrottsförbundets<br />utbildningssystem RF Sisu
+                    </p>
+                  </div>
+                </div>
               </div>
 
               {/* Image */}

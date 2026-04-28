@@ -6,6 +6,7 @@ import logoImage from '../Images/images.jpeg';
 
 const navItems: NavItem[] = [
   { label: 'Klienter', path: '/klienter' },
+  { label: 'Produkter', path: '/produkter' },
   { label: 'Föreläsningar', path: '/forelasningar' },
   { label: 'Om', path: '/om' },
   { label: 'Kontakt', path: '/kontakt' },

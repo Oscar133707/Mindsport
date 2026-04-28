@@ -7,6 +7,7 @@ import Clients from './pages/Clients';
 import Lectures from './pages/Lectures';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Produkter from './pages/Produkter';
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -32,6 +33,7 @@ const App: React.FC = () => {
           <Route path="/forelasningar" element={<Lectures />} />
           <Route path="/om" element={<About />} />
           <Route path="/kontakt" element={<Contact />} />
+          <Route path="/produkter" element={<Produkter />} />
         </Routes>
       </main>
       <Footer />

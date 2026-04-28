@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import cjImage from '../Images/New Images/WhatsApp Image 2026-01-26 at 09.28.42 (1).jpeg';
+import rfSisuImage from '../Images/New Images/RF Sisu.png';
 import mentalStrengthImage from '../Images/New Images/WhatsApp Image 2026-01-26 at 09.28.42 (2).jpeg';
 import experienceImage from '../Images/New Images/SSK.avif';
 import missionImage from '../Images/New Images/8DC99442-76EE-45A4-BBEE-BA23D65B3D1B.jpeg';
@@ -39,8 +40,24 @@ const About: React.FC = () => {
                 </h2>
                 <div className="text-base md:text-lg text-gray-300 font-light leading-[1.6] md:leading-relaxed space-y-4 md:space-y-5">
                   <p>
-                    Mitt namn är Carl-Johan Sjögren och jag har haft förmånen att ägna hela <strong className="text-white font-medium">13 år åt en professionell karriär inom ishockey</strong>. Under dessa år har jag fått arbeta hårt för att skaffa mig förståelse för vad som krävs för att nå framgång inom idrottens värld. Det har gett mig insikten att prestation handlar om mer än bara fysisk förmåga – det handlar också om din mentala styrka.
+                    Mitt namn är Carl-Johan Sjögren och jag har haft förmånen att ägna hela <strong className="text-white font-medium">över 15 år åt en professionell karriär inom ishockey</strong>. Under dessa år har jag fått arbeta hårt för att skaffa mig förståelse för vad som krävs för att nå framgång inom idrottens värld. Det har gett mig insikten att prestation handlar om mer än bara fysisk förmåga – det handlar också om din mentala styrka.
                   </p>
+                </div>
+                {/* RF-SISU Credential Card */}
+                <div className="mt-8 flex items-center gap-5 bg-[#2a2a2a] border border-gray-700 rounded-xl px-5 py-4">
+                  <img
+                    src={rfSisuImage}
+                    alt="RF Sisu logotyp"
+                    className="w-20 h-20 object-contain bg-white rounded-xl p-2 shrink-0"
+                  />
+                  <div>
+                    <p className="text-white font-semibold text-base leading-snug">
+                      Certifierad mental coach
+                    </p>
+                    <p className="text-gray-400 text-sm font-light mt-1 leading-snug">
+                      Kopplad till Riksidrottsförbundets<br />utbildningssystem RF Sisu
+                    </p>
+                  </div>
                 </div>
               </div>
 
