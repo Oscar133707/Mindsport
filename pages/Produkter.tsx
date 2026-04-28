@@ -176,12 +176,12 @@ const products: Product[] = [
       {
         name: 'Team program Bas',
         price: '5 500 kr/mån',
-        note: '1 session/mån – 250 kr/spelare/mån (22 spelare), inkl. resekostnad',
+        note: '1 session/mån – 250 kr/spelare/mån (kostnad räkn.ex 22 spelare), inkl. resekostnad',
       },
       {
         name: 'Team program Pro',
         price: '10 000 kr/mån',
-        note: '2 sessioner/mån + ledarstab – 385 kr/person/mån (22+4), inkl. resekostnad',
+        note: '2 sessioner/mån + ledarstab – 385 kr/person/mån (kostnad räkn.ex 22+4 spelare), inkl. resekostnad',
       },
       {
         name: 'Elite samarbete',
